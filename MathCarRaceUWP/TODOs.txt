@@ -1,0 +1,94 @@
+﻿- risky driver
+-- still fails sometimes at random maps
+
+
+- beautify
+-- get nice background image for inner part - use meadow.jpg instead of green solid color
+-- outer part... has a cool image but it is not mine... replace with a free to use image
+-- track has more nicer brush?
+-- get nice image for the outer part - audience
+-- get logos
+-- after race is finished, make a car race the chosen track...animation...
+
+explanation on first side
+- beautify, bad reading currently
+
+
+
+- test on other platforms
+-- windows phone
+-- windows RT tablet
+
+- check for publish validity into Windows Store
+
+
+MVP until here ------ publish in store -----------------------------------------
+
+
+- top driver - calculating all possible curves, taking the best
+simply brute force will not work, too many possibilities?
+- brute force with the quadrant direction check possibly... -> for each step only a choice between 3 directions instead of up to 7 directions
+possibly use score-system, give scores to grid points and select the one with the maximum
+
+
+random polygon tracks
+=====================
+- are they random enough?
+- inner polygon also needs to obey the constraint of the outer polygon.
+seems to be fulfilled by chance?
+- end of outer curve must fit to start of outer curve
+with the increased percentage intervals no real problem anymore...
+
+user paints track
+=================
+instead of fiddling around with random polygon tracks forever,
+better have user paint a track?
+Must be based on polygons...
+- create own track
+-- Constraints to make validation easier
+--- left point of starting line is constant, let user choose a width first
+--- outer and inner curve
+--- middle point of canvas lies inside inner curve 
+
+
+
+
+
+
+
+
+Implement if vector on track and not only is endpoint of new vector on track?
+
+- beautify
+-- after race is finished, make a car race the chosen track...animation...
+
+Test-Explorer
+continuous Integration konfigurieren...
+Git wählen
+https://www.visualstudio.com/docs/git/overview
+
+options
+- user can switch of candidate grid point marking
+- user can select speed of computer
+- user can ...?
+
+study
+https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide
+
+- introduce different cars (with different vector possibilities: acceleration at start, acceleration and braking during race...)
+
+- highscore?
+
+- save races/routes?
+-- together with high scores?
+-- IRoute = collection of grid points
+
+- save own created tracks
+
+- two players against each other?
+
+- use Linq expressions and replace for loops
+
+- GridBackground.xaml(.cs)
+user binding, e.g. for the string
+use MVVM

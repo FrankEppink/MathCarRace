@@ -1,0 +1,66 @@
+﻿<Page
+    x:Class="MathCarRaceUWP.GridBackground"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MathCarRaceUWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"  
+    x:Name="myPage"   
+    >
+
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="BorderThickness" Value="5" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="Black" />
+            <Setter Property="Margin" Value="0,10,0,0" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Chocolate" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+    </Page.Resources>
+    
+    <!-- <Grid x:Name="myGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"> -->
+    <Grid x:Name="myGrid">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/car-racing.jpg" Stretch="UniformToFill" />
+        </Grid.Background>
+        
+        <StackPanel x:Name="xMyStackPanel" Orientation="Vertical">
+            <Canvas x:Name="xMyCanvas" Width="600" Height="580" Margin="10,10,0,0" />
+
+            <TextBlock x:Name="xRaceStatus" HorizontalAlignment="Center" FontSize="24" FontStyle="Italic"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <TextBlock Text="Nr of vectors:"  VerticalAlignment="Center"/>
+                <!-- BorderBrush="White" -->
+                <TextBlock x:Name="xNrVectors" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            </StackPanel>
+            
+            <Button x:Name="xRestart" Margin="0,10,0,0" Content="restart" Click="restart_Click" HorizontalAlignment="Center" />
+            <Button x:Name="xBack2Main" Margin="0,10,0,0" Content="back to main" Click="back2Main_Click" HorizontalAlignment="Center" />
+
+            <Button x:Name="xComputerDrive" Margin="0,10,0,0" Content="computer drive on/off" Click="computerDrive_Click" HorizontalAlignment="Center" />
+
+            <ComboBox x:Name="xComputerDriverSelection" Margin="0,10,0,0" Background="Black" Foreground="White" SelectionChanged="xComputerDriverSelection_SelectionChanged" SelectedIndex="0" HorizontalAlignment="Center">
+                <x:String>Careful</x:String>
+                <x:String>Risky</x:String>
+                <x:String>Top</x:String>
+            </ComboBox>
+            
+            <!--
+            <TextBlock x:Name="xCoordinate" HorizontalAlignment="Center" />
+            <TextBlock x:Name="yCoordinate" HorizontalAlignment="Center" />
+
+            <TextBlock x:Name="match" HorizontalAlignment="Center" />
+            <TextBlock x:Name="distance" HorizontalAlignment="Center" />
+            <TextBlock x:Name="xGrid" HorizontalAlignment="Center" />
+            <TextBlock x:Name="yGrid" HorizontalAlignment="Center" />
+           
+            -->
+        </StackPanel>
+    </Grid>
+</Page>
