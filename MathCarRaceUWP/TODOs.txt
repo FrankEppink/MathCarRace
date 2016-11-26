@@ -1,22 +1,14 @@
 ﻿- risky driver
 -- still fails sometimes at random maps
 
-
 - beautify
 -- get nice background image for inner part - use meadow.jpg instead of green solid color
--- outer part... has a cool image but it is not mine... replace with a free to use image
 -- track has more nicer brush?
 -- get nice image for the outer part - audience
 -- get logos
 -- after race is finished, make a car race the chosen track...animation...
 
-explanation on first side
-- beautify, bad reading currently
-
-
-
 - check for publish validity into Windows Store
-
 
 MVP until here ------ publish in store -----------------------------------------
 
@@ -28,7 +20,6 @@ MVP until here ------ publish in store -----------------------------------------
 simply brute force will not work, too many possibilities?
 - brute force with the quadrant direction check possibly... -> for each step only a choice between 3 directions instead of up to 7 directions
 possibly use score-system, give scores to grid points and select the one with the maximum
-
 
 random polygon tracks
 =====================
@@ -49,13 +40,6 @@ Must be based on polygons...
 --- outer and inner curve
 --- middle point of canvas lies inside inner curve 
 
-
-
-
-
-
-
-
 Implement if vector on track and not only is endpoint of new vector on track?
 
 - beautify
@@ -63,9 +47,9 @@ Implement if vector on track and not only is endpoint of new vector on track?
 
 Test-Explorer
 continuous Integration konfigurieren...
-only works with TFS
+only works with TFS?
 
-options
+introduce options?
 - user can switch of candidate grid point marking
 - user can select speed of computer
 - user can ...?
