@@ -15,15 +15,14 @@ explanation on first side
 
 
 
-- test on other platforms
--- windows phone
--- windows RT tablet
-
 - check for publish validity into Windows Store
 
 
 MVP until here ------ publish in store -----------------------------------------
 
+- test on other platforms?
+-- windows phone
+-- windows RT tablet
 
 - top driver - calculating all possible curves, taking the best
 simply brute force will not work, too many possibilities?
@@ -64,8 +63,7 @@ Implement if vector on track and not only is endpoint of new vector on track?
 
 Test-Explorer
 continuous Integration konfigurieren...
-Git wählen
-https://www.visualstudio.com/docs/git/overview
+only works with TFS
 
 options
 - user can switch of candidate grid point marking

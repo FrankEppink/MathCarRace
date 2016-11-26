@@ -19,7 +19,7 @@
         </Style>
         <Style TargetType="TextBlock">
             <Setter Property="Foreground" Value="Chocolate" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />            
         </Style>
     </Page.Resources>
     
@@ -32,12 +32,17 @@
         <StackPanel x:Name="xMyStackPanel" Orientation="Vertical">
             <Canvas x:Name="xMyCanvas" Width="600" Height="580" Margin="10,10,0,0" />
 
-            <TextBlock x:Name="xRaceStatus" HorizontalAlignment="Center" FontSize="24" FontStyle="Italic"/>
-
+            <Border Background="Black" Opacity="0.8" HorizontalAlignment="Center">
+                <TextBlock x:Name="xRaceStatus" HorizontalAlignment="Center" FontSize="24" FontStyle="Italic"/>
+            </Border>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
-                <TextBlock Text="Nr of vectors:"  VerticalAlignment="Center"/>
+                <Border Background="Black" Opacity="0.8" HorizontalAlignment="Center">
+                    <TextBlock Text="Nr of vectors:"  VerticalAlignment="Center"/>
+                </Border>
                 <!-- BorderBrush="White" -->
-                <TextBlock x:Name="xNrVectors" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <Border Background="Black" Opacity="0.8" HorizontalAlignment="Center">
+                    <TextBlock x:Name="xNrVectors" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </Border>
             </StackPanel>
             
             <Button x:Name="xRestart" Margin="0,10,0,0" Content="restart" Click="restart_Click" HorizontalAlignment="Center" />

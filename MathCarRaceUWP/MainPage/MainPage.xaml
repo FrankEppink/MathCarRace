@@ -28,7 +28,9 @@
             </Grid.Background>
             <StackPanel x:Name="contentPanel" Margin="8,32,0,0">            
             <StackPanel x:Name="inputPanel" Orientation="Vertical" Margin="0,20,0,20">
-                <TextBlock Text="Choose your race track" Margin="0,20,0,0" FontSize="36" />
+                <Border Background="Black" Opacity="0.8" Margin="0,50,0,0" HorizontalAlignment="Center">
+                    <TextBlock Text="Choose your race track" FontSize="36" />
+                </Border>
                 <Button x:Name="raceTrack01" Content="Track Circle" Click="raceTrack01_Click" />
                 <Button x:Name="raceTrack02" Content="Track Polygon" Click="raceTrack02_Click" />
                 <Button x:Name="raceTrack03" Content="Track Rectangle" Click="raceTrack03_Click" />
