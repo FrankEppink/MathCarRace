@@ -1,12 +1,10 @@
 ﻿- beautify - use different design, no real pictures, no colors, only black and white and grey like an original "Vektorrennen"
--- middle is not green but?
 -- track is not brown but?
 -- track has more nicer brush?
 -- do not use color red for track?
 
 - check for publish validity into Windows Store
 
-- add an interesting real track
 
 MVP until here ------ publish in store -----------------------------------------
 

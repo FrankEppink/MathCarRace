@@ -23,6 +23,9 @@
 				case 4:
 					iTrack = new TrackPolygonRandom();
 					break;
+				case 5:
+					iTrack = new Track05RealTrack();
+					break;
 				default:
 					break;
 			}

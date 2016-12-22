@@ -34,7 +34,10 @@
                 <Button x:Name="raceTrack01" Content="Track Circle" Click="raceTrack01_Click" />
                 <Button x:Name="raceTrack02" Content="Track Polygon" Click="raceTrack02_Click" />
                 <Button x:Name="raceTrack03" Content="Track Rectangle" Click="raceTrack03_Click" />
-                <Button x:Name="raceTrack04" Content="Track Random" Click="raceTrack04_Click" />
+                
+                <Button x:Name="raceTrack04Random" Content="Track Random" Click="raceTrack04Random_Click" />
+                <Button x:Name="raceTrack05RealTrack" Content="Track Real" Click="raceTrack05Real_Click" />
+                
             </StackPanel>
             <Border Background="Black" Opacity="0.8" Margin="0,50,0,0" HorizontalAlignment="Center">
                 <TextBlock FontSize="24"  TextAlignment="Center">How to "Math Car Race"

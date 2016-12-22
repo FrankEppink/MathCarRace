@@ -22,6 +22,6 @@ namespace MathCarRaceUWP
 		/// <summary>
 		/// Inner Part Brush, i.e. the meadow in the middle
 		/// </summary>
-		internal static SolidColorBrush innerPartBrush = new SolidColorBrush { Color = Windows.UI.Colors.Green };
+		internal static SolidColorBrush innerPartBrush = new SolidColorBrush { Color = Windows.UI.Colors.Black };
 	}
 }

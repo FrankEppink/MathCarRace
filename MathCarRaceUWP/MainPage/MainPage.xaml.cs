@@ -33,9 +33,14 @@ namespace MathCarRaceUWP
 			this.Frame.Navigate(typeof(GridBackground), 3);
 		}
 
-		private void raceTrack04_Click(object sender, RoutedEventArgs e)
+		private void raceTrack04Random_Click(object sender, RoutedEventArgs e)
 		{
 			this.Frame.Navigate(typeof(GridBackground), 4);
 		}
+
+		private void raceTrack05Real_Click(object sender, RoutedEventArgs e)
+		{
+			this.Frame.Navigate(typeof(GridBackground), 5);
+		}		
 	}
 }

@@ -115,6 +115,7 @@
     <Compile Include="Track\Track01.cs" />
     <Compile Include="Track\Track02.cs" />
     <Compile Include="Track\Track03.cs" />
+    <Compile Include="Track\Track05RealTrack.cs" />
     <Compile Include="Track\TrackBrushDefs.cs" />
     <Compile Include="GridBackground\GridBackground.xaml.cs">
       <DependentUpon>GridBackground.xaml</DependentUpon>
