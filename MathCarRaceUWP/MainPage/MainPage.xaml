@@ -12,7 +12,7 @@
             <Setter Property="BorderThickness" Value="5" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Background" Value="Black" />
-            <Setter Property="Margin" Value="0,10,0,0" />
+            <Setter Property="Margin" Value="5,5,0,0" />
             <Setter Property="HorizontalAlignment" Value="Center" />
         </Style>
         <Style TargetType="TextBlock">
@@ -31,12 +31,18 @@
                 <Border Background="Black" Opacity="0.8" Margin="0,50,0,0" HorizontalAlignment="Center">
                     <TextBlock Text="Choose your race track" FontSize="36" />
                 </Border>
-                <Button x:Name="raceTrack01" Content="Track Circle" Click="raceTrack01_Click" />
-                <Button x:Name="raceTrack02" Content="Track Polygon" Click="raceTrack02_Click" />
-                <Button x:Name="raceTrack03" Content="Track Rectangle" Click="raceTrack03_Click" />
-                
+                <StackPanel x:Name="geometryTrackPanel" Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <Button x:Name="raceTrack01" Content="Track Circle" Click="raceTrack01_Click" />
+                    <Button x:Name="raceTrack02" Content="Track Polygon" Click="raceTrack02_Click" />
+                    <Button x:Name="raceTrack03" Content="Track Rectangle" Click="raceTrack03_Click" />
+                </StackPanel>
+               
+                <StackPanel x:Name="realTrackPanel" Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <Button x:Name="raceTrack05RealTrack" Content="Track A" Click="raceTrack05Real_Click" />
+                    <Button x:Name="raceTrack06RealTrack" Content="Track B" Click="raceTrack06Real_Click" />
+                </StackPanel>
+
                 <Button x:Name="raceTrack04Random" Content="Track Random" Click="raceTrack04Random_Click" />
-                <Button x:Name="raceTrack05RealTrack" Content="Track Real" Click="raceTrack05Real_Click" />
                 
             </StackPanel>
             <Border Background="Black" Opacity="0.8" Margin="0,50,0,0" HorizontalAlignment="Center">

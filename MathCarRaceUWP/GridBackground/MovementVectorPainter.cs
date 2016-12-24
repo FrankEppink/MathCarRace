@@ -15,7 +15,7 @@ namespace MathCarRaceUWP
 		/// <summary>
 		/// the brush of the race movement vectors
 		/// </summary>
-		private static SolidColorBrush raceVectorBrush = new SolidColorBrush { Color = Windows.UI.Colors.Red };
+		private static SolidColorBrush raceVectorBrush = new SolidColorBrush { Color = Windows.UI.Colors.Brown };
 
 		private const double lengthOfArrowLines = 10;
 		private const double angle1 = Math.PI / 8;

@@ -7,6 +7,7 @@ using Windows.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
 
@@ -123,7 +124,10 @@ namespace MathCarRaceUWP
 
 			uint nrGridRows = GetNrGridRows();
 
-			// paint the background grid
+			// paint background color
+			this.xMyCanvas.Background = GridBrushDefs.backgroundBrush;
+
+			// paint the background grid lines
 			PaintGridLines(nrGridRows);
 
 			// get a standard car with acceleration = 1

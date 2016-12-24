@@ -26,6 +26,9 @@
 				case 5:
 					iTrack = new Track05RealTrack();
 					break;
+				case 6:
+					iTrack = new Track06RealTrack();
+					break;
 				default:
 					break;
 			}

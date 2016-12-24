@@ -1,32 +1,23 @@
-﻿- beautify - use different design, no real pictures, no colors, only black and white and grey like an original "Vektorrennen"
--- track is not brown but?
--- track has more nicer brush?
--- do not use color red for track?
+﻿an additional real track, nr 03
 
 - check for publish validity into Windows Store
 
-
 MVP until here ------ publish in store -----------------------------------------
 
-- risky driver
--- still fails sometimes at random maps
+Different displays/platforms
+============================
+- windows phone
+- windows RT tablet
 
-- test on other platforms?
--- windows phone
--- windows RT tablet
-
+computer driver
+===============
 - top driver - calculating all possible curves, taking the best
 simply brute force will not work, too many possibilities?
 - brute force with the quadrant direction check possibly... -> for each step only a choice between 3 directions instead of up to 7 directions
 possibly use score-system, give scores to grid points and select the one with the maximum
 
-random polygon tracks
-=====================
-- are they random enough?
-- inner polygon also needs to obey the constraint of the outer polygon.
-seems to be fulfilled by chance?
-- end of outer curve must fit to start of outer curve
-with the increased percentage intervals no real problem anymore...
+- risky driver
+-- still fails sometimes at random maps
 
 user paints track
 =================
@@ -38,11 +29,31 @@ Must be based on polygons...
 --- left point of starting line is constant, let user choose a width first
 --- outer and inner curve
 --- middle point of canvas lies inside inner curve 
+- save own created tracks
+
+- highscore?
+-- save own highscore per track
+
+random polygon tracks
+=====================
+- are they random enough?
+- inner polygon also needs to obey the constraint of the outer polygon.
+seems to be fulfilled by chance?
+- end of outer curve must fit to start of outer curve
+with the increased percentage intervals no real problem anymore...
+
+Layout / GUI
+============
+Button for computer driver on/off and combo box for driver modi are not nice
+- they should not change position, when clicked on
+- they should have the same size
+
+--------------------------------------------------------------------------------------------------------
+
+Once I managed to get the computer driver throw an exception on Track 05, changing wildly between on/off and the different modi
 
 Implement if vector on track and not only is endpoint of new vector on track?
-
-- beautify idea
--- after race is finished, make a car race the chosen track...animation...
+- game still works without this constraints
 
 Test-Explorer
 continuous Integration konfigurieren...
@@ -58,13 +69,9 @@ https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-p
 
 - introduce different cars (with different vector possibilities: acceleration at start, acceleration and braking during race...)
 
-- highscore?
-
 - save races/routes?
 -- together with high scores?
 -- IRoute = collection of grid points
-
-- save own created tracks
 
 - two players against each other?
 

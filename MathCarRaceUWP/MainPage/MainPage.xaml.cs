@@ -1,8 +1,5 @@
-﻿
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-
-// Die Vorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 dokumentiert.
 
 namespace MathCarRaceUWP
 {
@@ -18,8 +15,6 @@ namespace MathCarRaceUWP
 
 		private void raceTrack01_Click(object sender, RoutedEventArgs e)
 		{
-			// this.Navigate(new Uri("Grid.xaml", UriKind.Relative));
-
 			this.Frame.Navigate(typeof(GridBackground), 1);
 		}
 
@@ -41,6 +36,11 @@ namespace MathCarRaceUWP
 		private void raceTrack05Real_Click(object sender, RoutedEventArgs e)
 		{
 			this.Frame.Navigate(typeof(GridBackground), 5);
+		}
+
+		private void raceTrack06Real_Click(object sender, RoutedEventArgs e)
+		{
+			this.Frame.Navigate(typeof(GridBackground), 6);
 		}		
 	}
 }
