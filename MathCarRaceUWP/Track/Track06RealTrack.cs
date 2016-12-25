@@ -215,11 +215,16 @@ namespace MathCarRaceUWP
 			innerPolygon.Points.Add(new Point(width / 100 * 74, height / 100 * 83));
 			innerPolygon.Points.Add(new Point(width / 100 * 72, height / 100 * 84));
 			innerPolygon.Points.Add(new Point(width / 100 * 70, height / 100 * 85));
-			innerPolygon.Points.Add(new Point(width / 100 * 50, height / 100 * 80));
-			
+			innerPolygon.Points.Add(new Point(width / 100 * 60, height / 100 * 83));
+			innerPolygon.Points.Add(new Point(width / 100 * 50, height / 100 * 83));
+			innerPolygon.Points.Add(new Point(width / 100 * 40, height / 100 * 81));
+			innerPolygon.Points.Add(new Point(width / 100 * 30, height / 100 * 81));
+
 			// left part end
 			innerPolygon.Points.Add(new Point(width / 100 * 25, height / 100 * 70));
-			innerPolygon.Points.Add(new Point(width / 100 * 20, height / 100 * 60));
+			innerPolygon.Points.Add(new Point(width / 100 * 23, height / 100 * 65));
+			innerPolygon.Points.Add(new Point(width / 100 * 22, height / 100 * 60));
+			innerPolygon.Points.Add(new Point(width / 100 * 21, height / 100 * 55));
 
 			base.SetInnerBorderProperties(innerPolygon);
 			children.Add(innerPolygon);

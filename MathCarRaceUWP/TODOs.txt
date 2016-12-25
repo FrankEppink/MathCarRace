@@ -1,44 +1,49 @@
-﻿an additional real track, nr 03
+﻿computer driver
+===============
+top driver
+----------
+- calculating all possible curves, taking the best simply brute force will not work, too many possibilities?
+- brute force with the quadrant direction check possibly... -> for each step only a choice between 3 directions instead of up to 7 directions
+possibly use score-system, give scores to grid points and select the one with the maximum
+- when switched to in a dead-end it is stuck in an infinite loop
 
-- check for publish validity into Windows Store
+risky driver
+------------
+- still fails sometimes at random maps, but not important?
+
+user paints track
+=================
+User creates/paints own track - base approach on polygons...
+1. Let user draw outer curve, with constraints that
+- left point of starting line is constant? Not sure if this is necessary
+- curve must include center of area
+- display and only activate the area to the user where he is allowed to draw curves, do not accept click/input in the invalid area
+
+2. Let user draw inner curve with constraints that
+- inner curve always has a minimum distance from the already available outer curve
+- inner curve must also include center of area
+
+3. Then sample the available pixels into polygons 
+
+Save own created tracks
 
 MVP until here ------ publish in store -----------------------------------------
+
+- check for publish validity into Windows Store
 
 Different displays/platforms
 ============================
 - windows phone
-- windows RT tablet
+- windows RT tablet (forget it!)
 
-computer driver
-===============
-- top driver - calculating all possible curves, taking the best
-simply brute force will not work, too many possibilities?
-- brute force with the quadrant direction check possibly... -> for each step only a choice between 3 directions instead of up to 7 directions
-possibly use score-system, give scores to grid points and select the one with the maximum
-
-- risky driver
--- still fails sometimes at random maps
-
-user paints track
-=================
-instead of fiddling around with random polygon tracks forever,
-better have user paint a track?
-Must be based on polygons...
-- create own track
--- Constraints to make validation easier
---- left point of starting line is constant, let user choose a width first
---- outer and inner curve
---- middle point of canvas lies inside inner curve 
-- save own created tracks
-
-- highscore?
--- save own highscore per track
+Highscore
+---------
+Save own highscore per track
 
 random polygon tracks
 =====================
 - are they random enough?
-- inner polygon also needs to obey the constraint of the outer polygon.
-seems to be fulfilled by chance?
+- inner polygon also needs to obey the constraint of the outer polygon - seems to be fulfilled by chance?
 - end of outer curve must fit to start of outer curve
 with the increased percentage intervals no real problem anymore...
 
@@ -49,8 +54,6 @@ Button for computer driver on/off and combo box for driver modi are not nice
 - they should have the same size
 
 --------------------------------------------------------------------------------------------------------
-
-Once I managed to get the computer driver throw an exception on Track 05, changing wildly between on/off and the different modi
 
 Implement if vector on track and not only is endpoint of new vector on track?
 - game still works without this constraints

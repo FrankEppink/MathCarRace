@@ -8,6 +8,7 @@ namespace MathCarRaceUWP
 	/// The top computer driver calculates all possibilites (with favorable directions only)
 	/// and chooses the shortest one
 	/// TODO: right now it seems that the first valid route is taken
+	/// TODO: ends in an infinite loop when switched to 'top' driver in a dead-end situation
 	/// </summary>
 	internal class ComputerDriverTop : IComputerDriver
 	{
@@ -36,8 +37,17 @@ namespace MathCarRaceUWP
 				CalculateBestRoute(track, car, currentRoute, middleGridPoint);
 			}
 
-			// return the current next best grid point
-			gridPoint = mCurrentBestRoute[routeGridPoints.Count];
+			if (mCurrentBestRoute.Count == 0)
+			{
+				// TODO handle this correctly, also it must be
+				// mCurrentBestRoute.Count < routeGridPoints.Count or similar
+				nrBacktracks = 1;
+			}
+			else
+			{
+				// return the current next best grid point
+				gridPoint = mCurrentBestRoute[routeGridPoints.Count];
+			}
 		}
 
 		#endregion IComputerDriver
