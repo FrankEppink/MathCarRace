@@ -1,7 +1,7 @@
 ﻿namespace MathCarRaceUWP
 {
 	/// <summary>
-	/// The class that paints the different tracks on the grid	
+	/// The class that returns the track that was chosen, i.e. whose trackNumber was received
 	/// </summary>
 	internal static class TrackProvider
 	{

@@ -90,6 +90,8 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="project.json" />
+    <None Include="TrackFiles\Race01.mcr" />
+    <None Include="TrackFiles\Race02.mcr" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -111,8 +113,8 @@
     <Compile Include="GridBackground\StateHelper.cs" />
     <Compile Include="GridBackground\GridBrushDefs.cs" />
     <Compile Include="GridBackground\MovementVectorPainter.cs" />
-    <Compile Include="TrackPersistence\ITrackLoader.cs" />
     <Compile Include="TrackPersistence\LoadedTrack.cs" />
+    <Compile Include="TrackPersistence\MyFilePicker.cs" />
     <Compile Include="TrackPersistence\TrackLoader.cs" />
     <Compile Include="Track\ITrack.cs" />
     <Compile Include="Track\Track01.cs" />

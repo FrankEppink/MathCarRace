@@ -7,7 +7,6 @@ using Windows.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
 
@@ -68,11 +67,6 @@ namespace MathCarRaceUWP
 		/// the computer driver manager, which includes the computer driver (IComputerDriver)
 		/// </summary>
 		private IComputerDriverManager mComputerDriverManager = new ComputerDriverManager();
-
-		/// <summary>
-		/// the object to load a persisted track
-		/// </summary>
-		private ITrackLoader mTrackLoader = new TrackLoader();
 
 		#endregion track and car objects
 
@@ -153,7 +147,7 @@ namespace MathCarRaceUWP
 		/// Get the track that was chosen and paint that
 		/// </summary>
 		/// <param name="e"></param>
-		protected override void OnNavigatedTo(NavigationEventArgs e)
+		protected async override void OnNavigatedTo(NavigationEventArgs e)
 		{
 			// first paint the track
 			int? trackNumber = e.Parameter as int?;
@@ -161,21 +155,28 @@ namespace MathCarRaceUWP
 			{
 				if (trackNumber != LOAD_TRACK_NR)
 				{
+					// a predefined track was chosen, get this track
 					mActiveTrack = TrackProvider.GetTrack((uint)trackNumber);					
 				}
 				else
 				{
-					// File browse
-					// FileBrowseDialog 
+					// user chose "Load Track"
+					// FileBrowseDialog
+					string filePath = await MyFilePicker.LetUserPickFile2Open();
 
 					// load track
-					mActiveTrack = mTrackLoader.LoadTrack("HEidenei");
+					mActiveTrack = await TrackLoader.LoadTrack(filePath);
 				}
 
 				if (mActiveTrack != null)
 				{
 					mActiveTrack.PaintTrack(xMyCanvas.Children, xMyCanvas.Width, xMyCanvas.Height, GetMiddleGridRowYCoordinate());
 					InitRace();
+				}
+				else
+				{
+					// loading track failed, navigate back to main
+					this.Frame.Navigate(typeof(MainPage));
 				}
 			}			
 		}

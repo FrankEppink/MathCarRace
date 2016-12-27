@@ -1,24 +1,4 @@
-﻿Track loader
-============
-...
-
-computer driver
-===============
-top driver
-----------
-- calculating all possible curves, taking the best simply brute force will not work, too many possibilities?
-- brute force with the quadrant direction check possibly... -> for each step only a choice between 3 directions instead of up to 7 directions
-possibly use score-system, give scores to grid points and select the one with the maximum
-- determine optimum based on the current length of the vector?
--- short vector, e.g. length 2 -> compare only the next 2 steps
--- long vector, e.g. length 4 -> compare the next 4 steps
-- bug: when switched to in a dead-end it is stuck in an infinite loop
-
-risky driver
-------------
-- still fails sometimes at random maps, but not important?
-
-user paints track
+﻿user paints track
 =================
 User creates/paints own track
 - base approach on polygons...
@@ -43,6 +23,24 @@ both are horizontally in the middle
 4. Then sample the available pixels into polygons 
 
 5. Save own created tracks
+use class 'TrackLoader' and 'MyFilePicker'
+
+computer driver
+===============
+top driver
+----------
+- calculating all possible curves, taking the best simply brute force will not work, too many possibilities?
+- brute force with the quadrant direction check possibly... -> for each step only a choice between 3 directions instead of up to 7 directions
+possibly use score-system, give scores to grid points and select the one with the maximum
+- determine optimum based on the current length of the vector?
+-- short vector, e.g. length 2 -> compare only the next 2 steps
+-- long vector, e.g. length 4 -> compare the next 4 steps
+- bug: when switched to in a dead-end it is stuck in an infinite loop
+
+risky driver
+------------
+- still fails sometimes at random maps, but not important?
+
 
 
 
@@ -55,6 +53,7 @@ Different displays/platforms
 ============================
 - windows phone
 - windows RT tablet (forget it!)
+https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide#use-visual-state-triggers-to-build-ui-that-can-adapt-to-available-screen-space
 
 Highscore
 ---------
@@ -88,7 +87,10 @@ introduce options?
 - user can ...?
 
 study
-https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide
+	https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide
+see also samples at
+	D:\10 Tools\WindowsAppDevelopment\UWP\Windows-universal-samples-master
+
 
 - introduce different cars (with different vector possibilities: acceleration at start, acceleration and braking during race...)
 

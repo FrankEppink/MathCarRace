@@ -51,7 +51,7 @@ namespace MathCarRaceUWP
 
 		private void loadTrack_Click(object sender, RoutedEventArgs e)
 		{
-			// NYI
+			// passing the special number which says "Please load a track"
 			this.Frame.Navigate(typeof(GridBackground), GridBackground.LOAD_TRACK_NR);
 		}
 	}
