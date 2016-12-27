@@ -111,6 +111,9 @@
     <Compile Include="GridBackground\StateHelper.cs" />
     <Compile Include="GridBackground\GridBrushDefs.cs" />
     <Compile Include="GridBackground\MovementVectorPainter.cs" />
+    <Compile Include="TrackPersistence\ITrackLoader.cs" />
+    <Compile Include="TrackPersistence\LoadedTrack.cs" />
+    <Compile Include="TrackPersistence\TrackLoader.cs" />
     <Compile Include="Track\ITrack.cs" />
     <Compile Include="Track\Track01.cs" />
     <Compile Include="Track\Track02.cs" />

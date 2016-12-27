@@ -20,6 +20,12 @@ namespace MathCarRaceUWP
 	/// </summary>
 	public sealed partial class GridBackground : Page
 	{
+		#region constants
+
+		public const int LOAD_TRACK_NR = 9999;
+
+		#endregion constants
+		
 		#region members
 
 		#region race state members
@@ -62,6 +68,11 @@ namespace MathCarRaceUWP
 		/// the computer driver manager, which includes the computer driver (IComputerDriver)
 		/// </summary>
 		private IComputerDriverManager mComputerDriverManager = new ComputerDriverManager();
+
+		/// <summary>
+		/// the object to load a persisted track
+		/// </summary>
+		private ITrackLoader mTrackLoader = new TrackLoader();
 
 		#endregion track and car objects
 
@@ -148,11 +159,22 @@ namespace MathCarRaceUWP
 			int? trackNumber = e.Parameter as int?;
 			if (trackNumber != null)
 			{
-				mActiveTrack = TrackProvider.GetTrack((uint)trackNumber);
+				if (trackNumber != LOAD_TRACK_NR)
+				{
+					mActiveTrack = TrackProvider.GetTrack((uint)trackNumber);					
+				}
+				else
+				{
+					// File browse
+					// FileBrowseDialog 
+
+					// load track
+					mActiveTrack = mTrackLoader.LoadTrack("HEidenei");
+				}
+
 				if (mActiveTrack != null)
 				{
 					mActiveTrack.PaintTrack(xMyCanvas.Children, xMyCanvas.Width, xMyCanvas.Height, GetMiddleGridRowYCoordinate());
-
 					InitRace();
 				}
 			}			

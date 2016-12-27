@@ -1,11 +1,18 @@
-﻿computer driver
+﻿Track loader
+============
+...
+
+computer driver
 ===============
 top driver
 ----------
 - calculating all possible curves, taking the best simply brute force will not work, too many possibilities?
 - brute force with the quadrant direction check possibly... -> for each step only a choice between 3 directions instead of up to 7 directions
 possibly use score-system, give scores to grid points and select the one with the maximum
-- when switched to in a dead-end it is stuck in an infinite loop
+- determine optimum based on the current length of the vector?
+-- short vector, e.g. length 2 -> compare only the next 2 steps
+-- long vector, e.g. length 4 -> compare the next 4 steps
+- bug: when switched to in a dead-end it is stuck in an infinite loop
 
 risky driver
 ------------
@@ -13,23 +20,36 @@ risky driver
 
 user paints track
 =================
-User creates/paints own track - base approach on polygons...
-1. Let user draw outer curve, with constraints that
-- left point of starting line is constant? Not sure if this is necessary
-- curve must include center of area
-- display and only activate the area to the user where he is allowed to draw curves, do not accept click/input in the invalid area
+User creates/paints own track
+- base approach on polygons...
+- always display only that area the user can choose from
 
-2. Let user draw inner curve with constraints that
+1. Starting line
+1.1. Let user choose left side of starting line
+1.2. Right side of starting line.
+both must be left of the center of area
+both are horizontally in the middle
+
+2. Let user draw outer curve, with constraints that
+- display and only activate the area to the user where he is allowed to draw curves, do not accept click/input in the invalid area
+- curve must have a minimum distance from the border
+- curve must include center of area
+- curve must not be too close too the center of area (to leave space for the inner curve)
+
+3. Let user draw inner curve with constraints that
 - inner curve always has a minimum distance from the already available outer curve
 - inner curve must also include center of area
 
-3. Then sample the available pixels into polygons 
+4. Then sample the available pixels into polygons 
 
-Save own created tracks
+5. Save own created tracks
+
+
 
 MVP until here ------ publish in store -----------------------------------------
 
 - check for publish validity into Windows Store
+https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide#submit-a-universal-windows-app-through-your-dashboard
 
 Different displays/platforms
 ============================
