@@ -108,11 +108,15 @@
     <Compile Include="ComputerDriver\IComputerDriverManager.cs" />
     <Compile Include="ComputerDriver\ComputerDriverRisky.cs" />
     <Compile Include="ComputerDriver\IComputerDriver.cs" />
-    <Compile Include="GridBackground\CandidateGridPointsPainter.cs" />
-    <Compile Include="GridBackground\ICandidateGridPointsPainter.cs" />
-    <Compile Include="GridBackground\StateHelper.cs" />
-    <Compile Include="GridBackground\GridBrushDefs.cs" />
-    <Compile Include="GridBackground\MovementVectorPainter.cs" />
+    <Compile Include="GridBackgroundRace\CandidateGridPointsPainter.cs" />
+    <Compile Include="GridBackgroundRace\GridLinePainter.cs" />
+    <Compile Include="GridBackgroundRace\ICandidateGridPointsPainter.cs" />
+    <Compile Include="GridBackgroundRace\StateHelper.cs" />
+    <Compile Include="GridBackgroundRace\GridBrushDefs.cs" />
+    <Compile Include="GridBackgroundRace\MovementVectorPainter.cs" />
+    <Compile Include="GridBackgroundTrackCreation\GridBackgroundTrackCreation.xaml.cs">
+      <DependentUpon>GridBackgroundTrackCreation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TrackPersistence\LoadedTrack.cs" />
     <Compile Include="TrackPersistence\MyFilePicker.cs" />
     <Compile Include="TrackPersistence\TrackLoader.cs" />
@@ -123,10 +127,10 @@
     <Compile Include="Track\Track06RealTrack.cs" />
     <Compile Include="Track\Track05RealTrack.cs" />
     <Compile Include="Track\TrackBrushDefs.cs" />
-    <Compile Include="GridBackground\GridBackground.xaml.cs">
+    <Compile Include="GridBackgroundRace\GridBackground.xaml.cs">
       <DependentUpon>GridBackground.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GridBackground\GridBackgroundHelper.cs" />
+    <Compile Include="GridBackgroundRace\GridBackgroundHelper.cs" />
     <Compile Include="Track\TrackBase.cs" />
     <Compile Include="Track\TrackPolygon.cs" />
     <Compile Include="Track\TrackPolygonRandom.cs" />
@@ -161,15 +165,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="GridBackground\GridBackground.xaml">
+    <Page Include="GridBackgroundRace\GridBackground.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GridBackgroundTrackCreation\GridBackgroundTrackCreation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainPage\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

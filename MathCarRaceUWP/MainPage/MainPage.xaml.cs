@@ -45,8 +45,7 @@ namespace MathCarRaceUWP
 
 		private void createTrack_Click(object sender, RoutedEventArgs e)
 		{
-			// NYI
-			this.createTrack.Content = "NYI";
+			this.Frame.Navigate(typeof(GridBackgroundTrackCreation));
 		}
 
 		private void loadTrack_Click(object sender, RoutedEventArgs e)

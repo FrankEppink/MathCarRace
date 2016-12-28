@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="MathCarRaceUWP.GridBackgroundTrackCreation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MathCarRaceUWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"  
+    x:Name="myPage"   
+    >
+
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="BorderThickness" Value="5" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="Black" />
+            <Setter Property="Margin" Value="5,5,0,0" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Chocolate" />
+            <Setter Property="HorizontalAlignment" Value="Center" />            
+        </Style>
+    </Page.Resources>
+    
+    <!-- <Grid x:Name="myGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"> -->
+    <Grid x:Name="myGrid">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/car-racing.jpg" Stretch="UniformToFill" />
+        </Grid.Background>
+        
+        <StackPanel x:Name="xMyStackPanel" Orientation="Vertical">
+            <Canvas x:Name="xMyCanvas" Width="600" Height="580" Margin="10,10,0,0" />
+
+            <Border Background="Black" Opacity="0.8" HorizontalAlignment="Center">
+                <TextBlock x:Name="xInstructions" HorizontalAlignment="Center" FontSize="24" FontStyle="Italic"/>
+            </Border>
+
+            <StackPanel x:Name="gameControlPanel" Orientation="Horizontal" HorizontalAlignment="Center" >
+                <Button x:Name="xSave" Content="save" Click="save_Click" HorizontalAlignment="Center" />
+                <Button x:Name="xBack2Main" Content="back to main" Click="back2Main_Click" HorizontalAlignment="Center" />
+            </StackPanel>
+                                  
+        </StackPanel>
+    </Grid>
+</Page>
