@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Shapes;
 
@@ -66,17 +61,17 @@ namespace MathCarRaceUWP
 			return myLine;
 		}
 
+		/// <summary>
+		/// Get number of grid rows in the canvas
+		/// </summary>
+		/// <param name="xMyCanvas"></param>
+		/// <returns></returns>
 		internal static uint GetNrGridRows(Canvas xMyCanvas)
 		{
 			return (uint)(xMyCanvas.Height / GridBackgroundHelper.gridDistance);
 		}
 
-		private static uint GetNrGridCols(Canvas xMyCanvas)
-		{
-			return (uint)(xMyCanvas.Width / GridBackgroundHelper.gridDistance);
-		}
-
-		private static uint GetMiddleGridPointY(Canvas xMyCanvas)
+		internal static uint GetMiddleGridPointY(Canvas xMyCanvas)
 		{
 			return (GetNrGridRows(xMyCanvas) / 2);
 		}
@@ -85,14 +80,19 @@ namespace MathCarRaceUWP
 		/// return the middle grid row y coordinate
 		/// </summary>
 		/// <returns></returns>
-		private static uint GetMiddleGridRowYCoordinate(Canvas xMyCanvas)
+		internal static uint GetMiddleGridRowYCoordinate(Canvas xMyCanvas)
 		{
 			return (uint)((GetNrGridRows(xMyCanvas) / 2) * GridBackgroundHelper.gridDistance);
 		}
 
-		private static uint GetMiddleGridPointX(Canvas xMyCanvas)
+		internal static uint GetMiddleGridPointX(Canvas xMyCanvas)
 		{
 			return (GetNrGridCols(xMyCanvas) / 2);
+		}
+
+		private static uint GetNrGridCols(Canvas xMyCanvas)
+		{
+			return (uint)(xMyCanvas.Width / GridBackgroundHelper.gridDistance);
 		}
 	}
 }

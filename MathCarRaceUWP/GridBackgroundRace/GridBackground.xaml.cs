@@ -82,36 +82,7 @@ namespace MathCarRaceUWP
 			}
 
 			// the first grid point is on the starting line and needs to be subtracted
-			return (uint) (mRouteGridPoints.Count - 1);
-		}
-
-		private uint GetNrGridRows()
-		{
-			return (uint)(xMyCanvas.Height / GridBackgroundHelper.gridDistance);
-		}
-
-		private uint GetNrGridCols()
-		{
-			return (uint)(xMyCanvas.Width / GridBackgroundHelper.gridDistance);
-		}
-
-		private uint GetMiddleGridPointY()
-		{
-			return (GetNrGridRows() / 2);
-		}
-
-		/// <summary>
-		/// return the middle grid row y coordinate
-		/// </summary>
-		/// <returns></returns>
-		private uint GetMiddleGridRowYCoordinate()
-		{
-			return (uint)((GetNrGridRows() / 2) * GridBackgroundHelper.gridDistance);
-		}
-
-		private uint GetMiddleGridPointX()
-		{
-			return (GetNrGridCols() / 2);
+			return (uint)(mRouteGridPoints.Count - 1);
 		}
 
 		#endregion properties
@@ -127,7 +98,7 @@ namespace MathCarRaceUWP
 
 			xMyCanvas.PointerReleased += handlePointerReleased;
 
-			uint nrGridRows = GetNrGridRows();
+			uint nrGridRows = GridLinePainter.GetNrGridRows(xMyCanvas);
 
 			// paint background color
 			this.xMyCanvas.Background = GridBrushDefs.backgroundBrush;
@@ -170,7 +141,8 @@ namespace MathCarRaceUWP
 
 				if (mActiveTrack != null)
 				{
-					mActiveTrack.PaintTrack(xMyCanvas.Children, xMyCanvas.Width, xMyCanvas.Height, GetMiddleGridRowYCoordinate());
+					mActiveTrack.PaintTrack(xMyCanvas.Children, xMyCanvas.Width, xMyCanvas.Height, 
+								GridLinePainter.GetMiddleGridRowYCoordinate(xMyCanvas));
 					InitRace();
 				}
 				else
@@ -344,7 +316,8 @@ namespace MathCarRaceUWP
 			Point gridPoint;
 
 			mComputerDriverManager.GetNextGridPoint(mActiveTrack, mActiveCar, mRouteGridPoints,
-						new Point(GetMiddleGridPointX(), GetMiddleGridPointY()),
+						new Point(	GridLinePainter.GetMiddleGridPointX(xMyCanvas), 
+									GridLinePainter.GetMiddleGridPointY(xMyCanvas)),
 						out nrBacktracks, out gridPoint);
 
 			if (nrBacktracks == 0)

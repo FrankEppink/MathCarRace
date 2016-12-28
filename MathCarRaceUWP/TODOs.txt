@@ -1,11 +1,6 @@
 ﻿user paints track
 =================
-User creates/paints own track
-- base approach on polygons...
-- always display only that area the user can choose from
-
-TrackCreation folder
-using GridBackground and then ....
+implement in GridBackgroundTrackCreation ....
 
 1. Starting line
 1.1. Let user choose left side of starting line
