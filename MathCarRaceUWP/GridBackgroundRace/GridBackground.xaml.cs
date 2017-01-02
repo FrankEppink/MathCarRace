@@ -104,7 +104,7 @@ namespace MathCarRaceUWP
 			this.xMyCanvas.Background = GridBrushDefs.backgroundBrush;
 
 			// paint the background grid lines
-			PaintGridLines(nrGridRows);
+			GridLinePainter.PaintGridLines(xMyCanvas, nrGridRows);
 
 			// get a standard car with acceleration = 1
 			mActiveCar = new StandardCar(1);
@@ -179,61 +179,6 @@ namespace MathCarRaceUWP
 			xRaceStatus.Text = StateHelper.startString;
 			mRaceState = StateHelper.RaceState.Manual;
 			xComputerDrive.IsEnabled = true;
-		}
-
-		/// <summary>
-		/// paint the grid lines and return the y coordinate of the 
-		/// </summary>
-		/// <returns></returns>
-		private void PaintGridLines(uint nrRows)
-		{
-			double cWidth = this.xMyCanvas.Width;
-			double cHeight = this.xMyCanvas.Height;
-
-			uint nrCols = (uint)(cWidth / GridBackgroundHelper.gridDistance);
-
-			// vertical lines
-			for (uint colIndex = 0; colIndex <= nrCols; colIndex++)
-			{
-				Line myLine = CreateGridLine();
-
-				myLine.X1 = colIndex * GridBackgroundHelper.gridDistance;
-				myLine.X2 = colIndex * GridBackgroundHelper.gridDistance;
-				myLine.Y1 = 0;
-				myLine.Y2 = cHeight;
-				
-				this.xMyCanvas.Children.Add(myLine);
-			}
-
-			// horizontal lines
-			for (uint rowIndex = 0; rowIndex <= nrRows; rowIndex++)
-			{
-				Line myLine = CreateGridLine();
-
-				myLine.X1 = 0;
-				myLine.X2 = cWidth;
-				myLine.Y1 = rowIndex * GridBackgroundHelper.gridDistance;
-				myLine.Y2 = rowIndex * GridBackgroundHelper.gridDistance;
-
-				this.xMyCanvas.Children.Add(myLine);
-			}			
-		}
-
-		/// <summary>
-		/// Create a grid line and set all common properties
-		/// </summary>
-		/// <returns></returns>
-		private Line CreateGridLine()
-		{
-			Line myLine = new Line();
-
-			myLine.Stroke = GridBrushDefs.gridLinesBrush;
-			myLine.StrokeThickness = 1;
-			myLine.Visibility = Visibility.Visible;
-
-			Canvas.SetZIndex(myLine, ZIndexValues.grid);
-
-			return myLine;
 		}
 
 		#endregion paint track and grid lines

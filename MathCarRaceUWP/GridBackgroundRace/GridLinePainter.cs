@@ -7,7 +7,7 @@ namespace MathCarRaceUWP
 	internal static class GridLinePainter
 	{
 		/// <summary>
-		/// paint the grid lines and return the y coordinate of the 
+		/// paint the grid lines
 		/// </summary>
 		/// <returns></returns>
 		internal static void PaintGridLines(Canvas xMyCanvas, uint nrRows)

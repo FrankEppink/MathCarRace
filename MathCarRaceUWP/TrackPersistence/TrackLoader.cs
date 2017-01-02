@@ -46,7 +46,7 @@ namespace MathCarRaceUWP
 
 		#endregion internal methods
 
-		#region private methods
+		#region private methods - LoadTrack
 
 		private static async Task<string> GetStringFromTrackFile(string filePath)
 		{
@@ -179,7 +179,7 @@ namespace MathCarRaceUWP
 			Point nextPoint = new Point(parseResultWeight, parseResultHeight);
 			return nextPoint;
 		}
-		
-		#endregion private methods
+
+		#endregion private methods - LoadTrack
 	}
 }
