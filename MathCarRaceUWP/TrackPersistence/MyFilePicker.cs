@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.AccessCache;
@@ -16,6 +17,8 @@ namespace MathCarRaceUWP
 		#region constants
 
 		private const string FILE_EXT = ".mcr";
+
+		private const string SAMPLE_FILE_NAME = "CreatedTrackXY" + FILE_EXT;
 
 		#endregion constants
 
@@ -41,11 +44,16 @@ namespace MathCarRaceUWP
 			}
 		}
 
-		internal static string LetUserPickFile2Save()
+		internal static async Task<StorageFile> LetUserPickFile2Save()
 		{
-			// FileSavePicker
-			// TODO
-			return null;
+			var savePicker = new Windows.Storage.Pickers.FileSavePicker();
+			savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
+			savePicker.FileTypeChoices.Add("Plain Text", new List<string>() { FILE_EXT });
+			// Default file name if the user does not type one in or select a file to replace
+			savePicker.SuggestedFileName = SAMPLE_FILE_NAME;
+
+			StorageFile file = await savePicker.PickSaveFileAsync();
+			return file;
 		}
 	}
 }

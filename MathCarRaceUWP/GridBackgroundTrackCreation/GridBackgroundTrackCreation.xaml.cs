@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Windows.Foundation;
+using Windows.Storage;
 using Windows.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -86,12 +87,12 @@ namespace MathCarRaceUWP
 		/// <summary>
 		/// The collection of outer curve UIElements (Lines)
 		/// </summary>
-		private IList<UIElement> mOuterCurveUIElements = new List<UIElement>();
+		private IList<Line> mOuterCurveUIElements = new List<Line>();
 
 		/// <summary>
 		/// The collection of inner curve UIElements (Lines)
 		/// </summary>
-		private IList<UIElement> mInnerCurveUIElements = new List<UIElement>();
+		private IList<Line> mInnerCurveUIElements = new List<Line>();
 
 		/// <summary>
 		/// The starting line needs to have been intersected/crossed twice (once at the start and once at the end) so that a curve is valid
@@ -185,9 +186,12 @@ namespace MathCarRaceUWP
 
 		#region button event handlers
 
-		private void save_Click(object sender, RoutedEventArgs e)
+		private async void save_Click(object sender, RoutedEventArgs e)
 		{
 			// TODO track already ready for saving?
+			StorageFile myStorageFile = await MyFilePicker.LetUserPickFile2Save();
+
+			save_DoIt(myStorageFile);
 
 			DoNextStage();
 		}
@@ -199,7 +203,7 @@ namespace MathCarRaceUWP
 
 		private void back2Main_Click(object sender, RoutedEventArgs e)
 		{
-			this.Frame.Navigate(typeof(MainPage));
+			Frame.Navigate(typeof(MainPage));
 		}
 
 		#endregion button event handlers
@@ -397,6 +401,31 @@ namespace MathCarRaceUWP
 		}
 
 		#endregion set instruction text
+
+		#region private save methods
+
+		private void save_DoIt(StorageFile myStorageFile)
+		{
+			IList<Point> outerCurve = ConvertUIElementList2PointList(mOuterCurveUIElements);
+			IList<Point> innerCurve = ConvertUIElementList2PointList(mInnerCurveUIElements);
+
+			TrackLoader.SaveTrack(myStorageFile, outerCurve, innerCurve);
+		}
+
+		private IList<Point> ConvertUIElementList2PointList(IList<Line> curve)
+		{
+			IList<Point> result = new List<Point>();
+
+			foreach(Line oneLine in curve)
+			{
+				Point onePoint = new Point(oneLine.X1, oneLine.Y1);
+				result.Add(onePoint);
+			}
+
+			return result;
+		}
+
+		#endregion private save methods
 	}
 }
 

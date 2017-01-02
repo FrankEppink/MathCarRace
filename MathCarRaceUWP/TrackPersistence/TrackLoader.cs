@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
@@ -12,17 +13,17 @@ namespace MathCarRaceUWP
 		#region constants
 
 		/// <summary>
-		/// symbol for the separation of segments like starting line, outer and inner curve
+		/// "#" - symbol for the separation of segments like starting line, outer and inner curve
 		/// </summary>
 		private const char SEPARATOR_SEGMENT = '#';
 
 		/// <summary>
-		/// separate numbers or points in one segment with this
+		/// "," - separate numbers or points in one segment with this
 		/// </summary>
-		private const char SEPARATOR_NUMBER = ',';
+		private const char SEPARATOR_NUMBER = '|';
 
 		/// <summary>
-		/// the width and the height value of one point are separated by this
+		/// "/" - the width and the height value of one point are separated by this
 		/// </summary>
 		private const char SEPARATOR_HEIGHT_WIDTH = '/';
 		
@@ -42,6 +43,14 @@ namespace MathCarRaceUWP
 
 			// now parse the text and fill into LoadedTrack
 			return CreateTrack(completeContent);
+		}
+
+		internal static async void SaveTrack(StorageFile myStorageFile, IList<Point> outerCurve, IList<Point> innerCurve)
+		{
+			// create string
+			string completeString = CreateCompleteString(outerCurve, innerCurve);
+
+			await WriteString2File(myStorageFile, completeString);
 		}
 
 		#endregion internal methods
@@ -181,5 +190,73 @@ namespace MathCarRaceUWP
 		}
 
 		#endregion private methods - LoadTrack
+
+		#region private methods - SaveTrack
+
+		private static string CreateCompleteString(IList<Point> outerCurve, IList<Point> innerCurve)
+		{
+			string startingLineString = CreateStartingLine(outerCurve, innerCurve);
+			string outerCurveString = CreateCurve(outerCurve);
+			string innerCurveString = CreateCurve(innerCurve);
+			string segmentSeparatorString = CreateSegmentSeparator();
+
+			StringBuilder sb = new StringBuilder();
+
+			sb.Append(startingLineString);
+			sb.Append(segmentSeparatorString);
+
+			sb.Append(outerCurveString);
+			sb.Append(segmentSeparatorString);
+
+			sb.Append(innerCurveString);
+			
+			return sb.ToString();
+		}
+
+		private static string CreateStartingLine(IList<Point> outerCurve, IList<Point> innerCurve)
+		{
+			StringBuilder sb = new StringBuilder();
+
+			sb.Append(outerCurve.First().X);
+			sb.Append(SEPARATOR_NUMBER);
+			sb.Append(innerCurve.First().X);
+
+			return sb.ToString();
+		}
+
+		private static string CreateCurve(IList<Point> curve)
+		{
+			StringBuilder sb = new StringBuilder();
+
+			foreach (Point onePoint in curve)
+			{
+				sb.Append(onePoint.X);
+				sb.Append(SEPARATOR_HEIGHT_WIDTH);
+				sb.Append(onePoint.Y);
+
+				if (onePoint != curve.Last())
+				{
+					sb.Append(SEPARATOR_NUMBER);
+				}
+			}
+
+			return sb.ToString();
+		}
+
+		private static string CreateSegmentSeparator()
+		{
+			StringBuilder sb = new StringBuilder();
+			sb.Append(Environment.NewLine);
+			sb.Append(SEPARATOR_SEGMENT);
+			sb.Append(Environment.NewLine);
+			return sb.ToString();
+		}
+
+		private static async Task WriteString2File(StorageFile saveFile, string string2Write)
+		{
+			await FileIO.WriteTextAsync(saveFile, string2Write);
+		}
+
+		#endregion private methods - SaveTrack
 	}
 }
