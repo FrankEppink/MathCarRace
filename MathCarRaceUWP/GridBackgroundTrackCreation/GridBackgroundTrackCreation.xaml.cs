@@ -36,9 +36,10 @@ namespace MathCarRaceUWP
 		private const string STEP_02_INNER_CURVE = "Please draw the inner curve in clockwise direction and in one movement.\n" + STARTING_LINE_DRAW;
 		private const string STEP_03_SAVE_TRACK = "Please save the created track.";
 
-		private const string ERROR_STARTING_LINE_X_WRONG_DIRECTION = "Please do not cross the starting line in the wrong direction!";
-		private const string ERROR_STARTING_LINE_NOT_X_TWICE = "Please cross the starting line twice for each curve!";
-		private const string ERROR_INTERNAL = "An internal error has occurred!";
+		private const string ERROR_RESTART = "Please do 'restart' to start drawing from scratch";
+		private const string ERROR_STARTING_LINE_X_WRONG_DIRECTION = "Please do not cross the starting line in the wrong direction!\n" + ERROR_RESTART;
+		private const string ERROR_STARTING_LINE_NOT_X_TWICE = "Please cross the starting line twice for each curve!\n" + ERROR_RESTART;
+		private const string ERROR_INTERNAL = "An internal error has occurred!\n" + ERROR_RESTART;
 
 		/// <summary>
 		/// The background brush
@@ -165,7 +166,10 @@ namespace MathCarRaceUWP
 			SetInstructionText(false, STEP_01_OUTER_CURVE);
 
 			foreach (UIElement elem in mOuterCurveUIElements) { xMyCanvas.Children.Remove(elem); }
+			mOuterCurveUIElements.Clear();
+
 			foreach (UIElement elem in mInnerCurveUIElements) { xMyCanvas.Children.Remove(elem); }
+			mInnerCurveUIElements.Clear();
 
 			ResetCurveDrawing();
 
@@ -180,6 +184,8 @@ namespace MathCarRaceUWP
 			mPointerPressed = false;
 			mPreviousPoint = new Point?();
 			mNrStartingLineIntersected = 0;
+
+			xSave.IsEnabled = true;
 		}
 
 		#endregion constructor and stuff
@@ -270,20 +276,20 @@ namespace MathCarRaceUWP
 		private void handlePointerMoved_PaintIt(Point currentPoint)
 		{
 			// actually paint a line that is part of the curve
-			Line startingLine = new Line();
-			startingLine.Stroke = TrackBrushDefs.trackBorderBrush;
+			Line curvePartLine = new Line();
+			curvePartLine.Stroke = TrackBrushDefs.trackBorderBrush;
 
-			startingLine.X1 = mPreviousPoint.Value.X;
-			startingLine.Y1 = mPreviousPoint.Value.Y;
+			curvePartLine.X1 = mPreviousPoint.Value.X;
+			curvePartLine.Y1 = mPreviousPoint.Value.Y;
 
-			startingLine.X2 = currentPoint.X;
-			startingLine.Y2 = currentPoint.Y;
+			curvePartLine.X2 = currentPoint.X;
+			curvePartLine.Y2 = currentPoint.Y;
 
-			xMyCanvas.Children.Add(startingLine);
+			xMyCanvas.Children.Add(curvePartLine);
 
 			// memorize the current point for later construction of the curve based on polygons
-			if (mTrackCreationState == trackCreationState.Step01_OuterCurve) { mOuterCurveUIElements.Add(startingLine); }
-			else if (mTrackCreationState == trackCreationState.Step02_InnerCurve) { mInnerCurveUIElements.Add(startingLine); }
+			if (mTrackCreationState == trackCreationState.Step01_OuterCurve) { mOuterCurveUIElements.Add(curvePartLine); }
+			else if (mTrackCreationState == trackCreationState.Step02_InnerCurve) { mInnerCurveUIElements.Add(curvePartLine); }
 		}
 
 		/// <summary>
