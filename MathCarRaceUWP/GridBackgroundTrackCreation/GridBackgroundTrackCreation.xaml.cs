@@ -191,9 +191,12 @@ namespace MathCarRaceUWP
 			// TODO track already ready for saving?
 			StorageFile myStorageFile = await MyFilePicker.LetUserPickFile2Save();
 
-			save_DoIt(myStorageFile);
+			if (myStorageFile != null)
+			{
+				save_DoIt(myStorageFile);
 
-			DoNextStage();
+				DoNextStage();
+			}
 		}
 
 		private void restart_Click(object sender, RoutedEventArgs e)
@@ -352,7 +355,14 @@ namespace MathCarRaceUWP
 			// 2. curve is complete - Verified by starting line X check
 			// 3. curve ends on starting line - Verified by starting line X check
 			// 4. curve surrounds the middle circle - ???
+
 			// TODO: check if validations are sufficient and working fine, is it possible to workaround them?
+
+			// TODO: missing validation: each curves must not cross
+			// A. itself
+			// B. the other curve
+
+			// TODO start and end of starting line of each curve should be identical/similar
 
 			// do next stage
 			DoNextStage();
@@ -418,7 +428,11 @@ namespace MathCarRaceUWP
 
 			foreach(Line oneLine in curve)
 			{
-				Point onePoint = new Point(oneLine.X1, oneLine.Y1);
+				// always take the starting point of a line and
+				// transform width and height into percentage values
+				double percX1 = (oneLine.X1 / xMyCanvas.Width) * 100;
+				double percY1 = (oneLine.Y1 / xMyCanvas.Height) * 100;
+				Point onePoint = new Point(percX1, percY1);
 				result.Add(onePoint);
 			}
 

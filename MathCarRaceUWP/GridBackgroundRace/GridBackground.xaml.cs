@@ -135,8 +135,11 @@ namespace MathCarRaceUWP
 					// FileBrowseDialog
 					string filePath = await MyFilePicker.LetUserPickFile2Open();
 
-					// load track
-					mActiveTrack = await TrackLoader.LoadTrack(filePath);
+					if (filePath != null)
+					{
+						// load track
+						mActiveTrack = await TrackLoader.LoadTrack(filePath);
+					}
 				}
 
 				if (mActiveTrack != null)

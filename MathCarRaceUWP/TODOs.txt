@@ -1,32 +1,27 @@
 ﻿user paints track
 =================
 implement in GridBackgroundTrackCreation ....
-
-1. Starting line
-1.1. Let user choose left side of starting line
-1.2. Right side of starting line.
-both must be left of the center of area
-both are horizontally in the middle
-
-2. Let user draw outer curve, with constraints that
+more validation
+1. outer curve
 - display and only activate the area to the user where he is allowed to draw curves, do not accept click/input in the invalid area
 - curve must have a minimum distance from the border
 - curve must include center of area
 - curve must not be too close too the center of area (to leave space for the inner curve)
+- must not cross itself
 
-3. Let user draw inner curve with constraints that
+2. inner curve
 - inner curve always has a minimum distance from the already available outer curve
 - inner curve must also include center of area
 
-4. Then sample the available pixels into polygons 
-
-5. Save own created tracks
-use class 'TrackLoader' and 'MyFilePicker'
+track loading and saving
+========================
+at initial load the path where the track files are located should be used
 
 computer driver
 ===============
 top driver
 ----------
+- deactivate before publishing if not fixed...
 - calculating all possible curves, taking the best simply brute force will not work, too many possibilities?
 - brute force with the quadrant direction check possibly... -> for each step only a choice between 3 directions instead of up to 7 directions
 possibly use score-system, give scores to grid points and select the one with the maximum
@@ -38,9 +33,6 @@ possibly use score-system, give scores to grid points and select the one with th
 risky driver
 ------------
 - still fails sometimes at random maps, but not important?
-
-
-
 
 MVP until here ------ publish in store -----------------------------------------
 

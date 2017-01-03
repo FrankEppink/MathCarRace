@@ -8,6 +8,21 @@ using Windows.Storage;
 
 namespace MathCarRaceUWP
 {
+	/// <summary>
+	/// TrackLoader saves the tracks in the following format
+	/// Values are always percentages, i.e. 10 means 10 % of the width or height of the canvas
+	/// x|y						=	left x-coordinate of starting line | right x-coordinate of starting line
+	/// #						=	separator character
+	/// x1/y1| x2/y2| ...		=	outer curve points, x1/y1 = width and height of first curve point | x2/y2 = width and height of second curve point
+	/// #						=	separator character
+	/// x10/y10| x11/y11| ...	=	inner curve points
+	/// Example:
+	/// 10|40
+	/// #
+	/// 10/10| 90/10| 90/90| 10/90
+	/// #
+	/// 40/40| 60/40| 60/60| 40/60
+	/// </summary>
 	internal static class TrackLoader
 	{
 		#region constants
