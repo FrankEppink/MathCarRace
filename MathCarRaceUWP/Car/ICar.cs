@@ -22,17 +22,5 @@ namespace MathCarRaceUWP
 		/// </summary>
 		/// <returns></returns>
 		IList<Point> GetCandidateGridPoints(IList<Point> routeGridPoints);
-
-		/*
-		/// <summary>
-		/// Get the longest candidate grid point among the received candidate grid points
-		/// longest grid point = longest movement vector
-		/// only supported for at least two points in routeGridPoints
-		/// </summary>
-		/// <param name="routeGridPoints">the current route grid points</param>
-		/// <param name="candidateGridPoints">the candidate grid points among which to search for the longest grid point</param>
-		/// <returns></returns>
-		IList<Point> GetLongestCandidateGridPoint(IList<Point> routeGridPoints, IList<Point> candidateGridPoints);
-		*/
 	}
 }

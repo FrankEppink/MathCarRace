@@ -4,6 +4,9 @@ using Windows.Foundation;
 
 namespace MathCarRaceUWP
 {
+	/// <summary>
+	/// Static class for vector mathematic methods
+	/// </summary>
 	internal static class VectorMath
 	{
 		#region internal methods

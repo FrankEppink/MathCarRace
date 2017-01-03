@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MathCarRaceUWPTest</RootNamespace>
     <AssemblyName>MathCarRaceUWPTest</AssemblyName>
-    <DefaultLanguage>de-DE</DefaultLanguage>
+    <DefaultLanguage>en-us</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
@@ -104,6 +104,7 @@
     </Compile>
     <Compile Include="Car\CarHelperTest.cs" />
     <Compile Include="VectorMath\VectorMathTest.cs" />
+    <Compile Include="VectorMath\VectorMathUITest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="UnitTestApp.xaml">

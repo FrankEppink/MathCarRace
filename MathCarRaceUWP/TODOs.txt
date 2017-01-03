@@ -1,27 +1,15 @@
-﻿user paints track
-=================
-implement in GridBackgroundTrackCreation ....
-more validation
-1. outer curve
-- display and only activate the area to the user where he is allowed to draw curves, do not accept click/input in the invalid area
-- curve must have a minimum distance from the border
-- curve must include center of area
-- curve must not be too close too the center of area (to leave space for the inner curve)
-- must not cross itself
-
-2. inner curve
-- inner curve always has a minimum distance from the already available outer curve
-- inner curve must also include center of area
-
-track loading and saving
+﻿track loading and saving
 ========================
 at initial load the path where the track files are located should be used
+to be checked on initial start on a different device...
+are the track files actually installed on the target device and if yes where
 
 computer driver
 ===============
 top driver
 ----------
 - deactivate before publishing if not fixed...
+
 - calculating all possible curves, taking the best simply brute force will not work, too many possibilities?
 - brute force with the quadrant direction check possibly... -> for each step only a choice between 3 directions instead of up to 7 directions
 possibly use score-system, give scores to grid points and select the one with the maximum
@@ -61,6 +49,10 @@ Layout / GUI
 Button for computer driver on/off and combo box for driver modi are not nice
 - they should not change position, when clicked on
 - they should have the same size
+
+user paints track (GridBackgroundTrackCreation)
+===============================================
+bug: starting line not completely correct, sometimes starting line grid points are outside but still can be clicked on
 
 --------------------------------------------------------------------------------------------------------
 

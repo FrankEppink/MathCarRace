@@ -40,6 +40,8 @@ namespace MathCarRaceUWP
 		private const string ERROR_STARTING_LINE_X_WRONG_DIRECTION = "Please do not cross the starting line in the wrong direction!\n" + ERROR_RESTART;
 		private const string ERROR_STARTING_LINE_NOT_X_TWICE = "Please cross the starting line twice for each curve!\n" + ERROR_RESTART;
 		private const string ERROR_INTERNAL = "An internal error has occurred!\n" + ERROR_RESTART;
+		private const string ERROR_INTERSECTION_OUTER = "Please do not cross the outer curve\n" + ERROR_RESTART;
+		private const string ERROR_INTERSECTION_INNER = "Please do not cross the inner curve\n" + ERROR_RESTART;
 
 		/// <summary>
 		/// The background brush
@@ -136,7 +138,7 @@ namespace MathCarRaceUWP
 		private void PaintStartingLineCandidate()
 		{
 			uint startingLineYCoordinate = GridLinePainter.GetMiddleGridRowYCoordinate(xMyCanvas);
-			uint startingLineXRightGridPoint = GridLinePainter.GetMiddleGridPointX(xMyCanvas) - 1;
+			uint startingLineXRightGridPoint = GridLinePainter.GetMiddleGridPointX(xMyCanvas);
 			double startingLineXRightCoordinate = startingLineXRightGridPoint * GridBackgroundHelper.gridDistance;
 
 			mStartingLineCandidateLeftPoint.X = 0.0;
@@ -194,7 +196,6 @@ namespace MathCarRaceUWP
 
 		private async void save_Click(object sender, RoutedEventArgs e)
 		{
-			// TODO track already ready for saving?
 			StorageFile myStorageFile = await MyFilePicker.LetUserPickFile2Save();
 
 			if (myStorageFile != null)
@@ -250,7 +251,12 @@ namespace MathCarRaceUWP
 							// to make sure we have a proper start
 							if (mNrStartingLineIntersected > 0)
 							{
-								handlePointerMoved_PaintIt(currentPoint);
+								Line newLine;
+								bool valid = handlePointerMoved_Validate(currentPoint, out newLine);
+								if (valid)
+								{
+									handlePointerMoved_PaintIt(newLine);
+								}
 							}
 
 							// check if and handle the starting line intersections
@@ -270,26 +276,83 @@ namespace MathCarRaceUWP
 		}
 
 		/// <summary>
-		/// Actually paint a part of the curve and memorize it
+		/// Validate the new Point, i.e. the new line
 		/// </summary>
 		/// <param name="currentPoint"></param>
-		private void handlePointerMoved_PaintIt(Point currentPoint)
+		/// <returns></returns>
+		private bool handlePointerMoved_Validate(Point currentPoint, out Line newLine)
 		{
-			// actually paint a line that is part of the curve
-			Line curvePartLine = new Line();
-			curvePartLine.Stroke = TrackBrushDefs.trackBorderBrush;
+			bool result = true;
 
-			curvePartLine.X1 = mPreviousPoint.Value.X;
-			curvePartLine.Y1 = mPreviousPoint.Value.Y;
+			// Does the new line intersect with a curve, this is not allowed
+			newLine = new Line();
+			newLine.Stroke = TrackBrushDefs.trackBorderBrush;
 
-			curvePartLine.X2 = currentPoint.X;
-			curvePartLine.Y2 = currentPoint.Y;
+			newLine.X1 = mPreviousPoint.Value.X;
+			newLine.Y1 = mPreviousPoint.Value.Y;
 
-			xMyCanvas.Children.Add(curvePartLine);
+			newLine.X2 = currentPoint.X;
+			newLine.Y2 = currentPoint.Y;
+
+			int position;
+			if (mTrackCreationState == trackCreationState.Step01_OuterCurve)
+			{
+				// check for intersection with the outer curve, we however accept an intersection with the last line of outer curve,
+				// because that is natural for lines that are chained together
+				if (VectorMathUI.CheckIfLineIntersectsWithLineCollection(newLine, mOuterCurveUIElements, out position))
+				{
+					if (position != mOuterCurveUIElements.Count - 1)
+					{
+						// invalid intersection
+						SetInstructionText(true, ERROR_INTERSECTION_OUTER);
+						mTrackCreationState = trackCreationState.Error;
+						result = false;
+					}
+				}
+			}			
+			else if (mTrackCreationState == trackCreationState.Step02_InnerCurve)
+			{
+				// user is currently drawing the inner curve ->
+				// check for an intersection with the outer curve which is always invalid, independant of the position
+				if (VectorMathUI.CheckIfLineIntersectsWithLineCollection(newLine, mOuterCurveUIElements, out position))
+				{					
+					// invalid intersection
+					SetInstructionText(true, ERROR_INTERSECTION_OUTER);
+					mTrackCreationState = trackCreationState.Error;
+					result = false;
+				}
+				if (result)
+				{
+					// so far we are okay ->
+					// check for an intersection with the inner curve, we accept an intersection with the last line of inner curve,
+					// because that is natural for lines that are chained together
+					if (VectorMathUI.CheckIfLineIntersectsWithLineCollection(newLine, mInnerCurveUIElements, out position))
+					{
+						if (position != mInnerCurveUIElements.Count - 1)
+						{
+							// invalid intersection
+							SetInstructionText(true, ERROR_INTERSECTION_INNER);
+							mTrackCreationState = trackCreationState.Error;
+							result = false;
+						}
+					}
+				}
+			}
+
+			return result;
+		}
+
+		/// <summary>
+		/// Actually paint a part of the curve and memorize it
+		/// </summary>
+		private void handlePointerMoved_PaintIt(Line newLine)
+		{
+			// actually paint the new line that becomes part of the (current) curve
+			xMyCanvas.Children.Add(newLine);
 
 			// memorize the current point for later construction of the curve based on polygons
-			if (mTrackCreationState == trackCreationState.Step01_OuterCurve) { mOuterCurveUIElements.Add(curvePartLine); }
-			else if (mTrackCreationState == trackCreationState.Step02_InnerCurve) { mInnerCurveUIElements.Add(curvePartLine); }
+			if (mTrackCreationState == trackCreationState.Step01_OuterCurve) { mOuterCurveUIElements.Add(newLine); }
+			else if (mTrackCreationState == trackCreationState.Step02_InnerCurve) { mInnerCurveUIElements.Add(newLine); }
 		}
 
 		/// <summary>
