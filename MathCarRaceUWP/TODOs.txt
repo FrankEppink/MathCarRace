@@ -1,8 +1,19 @@
-﻿track loading and saving
+﻿MVP until here ------ publish in store -----------------------------------------
+
+- check for publish validity into Windows Store
+https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide#submit-a-universal-windows-app-through-your-dashboard
+
+track loading and saving
 ========================
 at initial load the path where the track files are located should be used
 to be checked on initial start on a different device...
 are the track files actually installed on the target device and if yes where
+
+Different displays/platforms
+============================
+- windows phone
+- windows RT tablet (forget it!)
+https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide#use-visual-state-triggers-to-build-ui-that-can-adapt-to-available-screen-space
 
 computer driver
 ===============
@@ -16,22 +27,16 @@ possibly use score-system, give scores to grid points and select the one with th
 - determine optimum based on the current length of the vector?
 -- short vector, e.g. length 2 -> compare only the next 2 steps
 -- long vector, e.g. length 4 -> compare the next 4 steps
+
+- base approach on inner curve and its movement
+-- determine those grid points that are closest to the inner curve, only choose among them 
+-- base each movement vector (direction and length) on the direction and length of the inner curve
+
 - bug: when switched to in a dead-end it is stuck in an infinite loop
 
 risky driver
 ------------
 - still fails sometimes at random maps, but not important?
-
-MVP until here ------ publish in store -----------------------------------------
-
-- check for publish validity into Windows Store
-https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide#submit-a-universal-windows-app-through-your-dashboard
-
-Different displays/platforms
-============================
-- windows phone
-- windows RT tablet (forget it!)
-https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide#use-visual-state-triggers-to-build-ui-that-can-adapt-to-available-screen-space
 
 Highscore
 ---------
@@ -49,6 +54,7 @@ Layout / GUI
 Button for computer driver on/off and combo box for driver modi are not nice
 - they should not change position, when clicked on
 - they should have the same size
+- it should be clearer how to switch the computer driver on and off
 
 user paints track (GridBackgroundTrackCreation)
 ===============================================
