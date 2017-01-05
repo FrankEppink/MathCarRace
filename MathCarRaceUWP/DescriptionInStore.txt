@@ -1,0 +1,10 @@
+﻿Math Car Race is a mathematical game that simulates a car race.
+The car movement on the tracks are based on vectors and each move is determined by the previous vector.
+The previous vector prolonged and the surrounding neighbor grid points can be selected.
+Be careful not to go too fast, i.e. choose too long vectors or otherwise you will not stay on the track.
+
+Features:
+- Race on predefined tracks
+- Generate a random track
+- Create own tracks
+- Let the computer drive a race track

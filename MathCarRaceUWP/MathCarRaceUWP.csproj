@@ -16,7 +16,11 @@
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>MathCarRaceUWP_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>MathCarRaceUWP_StoreKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>14CFC771A5A15297B6BF8874BB2E24A2B9D1B557</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -89,6 +93,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="MathCarRaceUWP_StoreKey.pfx" />
     <None Include="project.json" />
     <None Include="TrackFiles\CreatedTrack01.mcr">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -157,7 +162,10 @@
     <Content Include="Assets\SplashScreen.scale-200_original.png" />
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200_Original.png" />
+    <Content Include="DescriptionInStore.txt" />
     <Content Include="Images\car-racing.jpg" />
+    <None Include="Package.StoreAssociation.xml" />
+    <Content Include="Images\Screenshot.PNG" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
