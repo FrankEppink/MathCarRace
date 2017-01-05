@@ -124,36 +124,49 @@ namespace MathCarRaceUWP
 			int? trackNumber = e.Parameter as int?;
 			if (trackNumber != null)
 			{
-				if (trackNumber != LOAD_TRACK_NR)
+				try
 				{
-					// a predefined track was chosen, get this track
-					mActiveTrack = TrackProvider.GetTrack((uint)trackNumber);					
-				}
-				else
-				{
-					// user chose "Load Track"
-					// FileBrowseDialog
-					string filePath = await MyFilePicker.LetUserPickFile2Open();
-
-					if (filePath != null)
+					if (trackNumber != LOAD_TRACK_NR)
 					{
-						// load track
-						mActiveTrack = await TrackLoader.LoadTrack(filePath);
+						// a predefined track was chosen, get this track
+						mActiveTrack = TrackProvider.GetTrack((uint)trackNumber);
+					}
+					else
+					{
+						// user chose "Load Track"
+						// FileBrowseDialog
+						string filePath = await MyFilePicker.LetUserPickFile2Open();
+
+						if (filePath != null)
+						{
+							// load track
+							mActiveTrack = await TrackLoader.LoadTrack(filePath);
+						}
+					}
+
+					if (mActiveTrack != null)
+					{
+						mActiveTrack.PaintTrack(xMyCanvas.Children, xMyCanvas.Width, xMyCanvas.Height,
+									GridLinePainter.GetMiddleGridRowYCoordinate(xMyCanvas));
+						InitRace();
+					}
+					else
+					{
+						// loading track failed, navigate back to main
+						Back2Main();
 					}
 				}
-
-				if (mActiveTrack != null)
+				catch (Exception)
 				{
-					mActiveTrack.PaintTrack(xMyCanvas.Children, xMyCanvas.Width, xMyCanvas.Height, 
-								GridLinePainter.GetMiddleGridRowYCoordinate(xMyCanvas));
-					InitRace();
-				}
-				else
-				{
-					// loading track failed, navigate back to main
-					this.Frame.Navigate(typeof(MainPage));
+					// an exception occurred, return to main page
+					Back2Main();
 				}
 			}			
+		}
+
+		private void Back2Main()
+		{
+			this.Frame.Navigate(typeof(MainPage));
 		}
 
 		/// <summary>

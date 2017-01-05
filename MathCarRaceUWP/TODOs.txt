@@ -1,19 +1,27 @@
 ﻿MVP until here ------ publish in store -----------------------------------------
 
-- check for publish validity into Windows Store
-https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide#submit-a-universal-windows-app-through-your-dashboard
+- tax info ok?
+- then publish
+- successful?
+
+------------------------------------------------------------------------------------
+
+Different displays/platforms
+============================
+- windows 10 laptop
+- windows 10 mobile - phone
+- windows RT tablet - probably not available, but check
+
+general approach
+https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide#use-visual-state-triggers-to-build-ui-that-can-adapt-to-available-screen-space
+
+-------------------------------------------------------------------------------------
 
 track loading and saving
 ========================
 at initial load the path where the track files are located should be used
 to be checked on initial start on a different device...
 are the track files actually installed on the target device and if yes where
-
-Different displays/platforms
-============================
-- windows phone
-- windows RT tablet (forget it!)
-https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide#use-visual-state-triggers-to-build-ui-that-can-adapt-to-available-screen-space
 
 computer driver
 ===============

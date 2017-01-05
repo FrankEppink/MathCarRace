@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Windows.Foundation;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Shapes;
 
 namespace MathCarRaceUWP
@@ -108,12 +106,6 @@ namespace MathCarRaceUWP
 		/// <param name="innerBorder"></param>
 		protected void SetInnerBorderProperties(Shape innerBorder)
 		{
-			// TODO this is not working...
-			// https://msdn.microsoft.com/en-us/library/hh763341.aspx
-			// ImageBrush innerPartBrush = new ImageBrush();
-			// innerPartBrush.ImageSource = new BitmapImage(new Uri(@"Images\meadow.jpg", UriKind.Relative));
-			// innerPartBrush.ImageSource = new BitmapImage(new Uri("ms-appx-web:///Images/meadow.jpg", UriKind.Absolute));
-
 			innerBorder.Stroke = TrackBrushDefs.trackBorderBrush;
 			innerBorder.Fill = TrackBrushDefs.innerPartBrush;  // overwrite the brush of the outer track
 			
