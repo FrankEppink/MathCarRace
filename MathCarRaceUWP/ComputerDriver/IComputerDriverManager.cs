@@ -4,6 +4,7 @@ namespace MathCarRaceUWP
 {
 	public enum ComputerDriverType
 	{
+		None,
 		Careful,
 		Risky,
 		Top

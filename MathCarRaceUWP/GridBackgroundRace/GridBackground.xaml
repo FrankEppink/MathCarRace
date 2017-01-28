@@ -45,21 +45,22 @@
                 </Border>
             </StackPanel>
 
+            <StackPanel x:Name="DriveModePanel" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Border Background="Black" HorizontalAlignment="Center" Margin="0,5,0,1">
+                    <TextBlock Text="Drive Mode:" VerticalAlignment="Center" Foreground="White" Margin="10,0" />
+                </Border>
+                <ComboBox x:Name="xDriveModeSelection" Margin="5,5,0,0" Background="Black" Foreground="White" 
+                          SelectionChanged="xDriveModeSelection_SelectionChanged" SelectedIndex="0" 
+                          HorizontalAlignment="Right" VerticalAlignment="Stretch">
+                    <x:String>Human</x:String>
+                    <x:String>Careful Computer</x:String>
+                    <x:String>Risky Computer</x:String>
+                </ComboBox>
+            </StackPanel>
+            
             <StackPanel x:Name="gameControlPanel" Orientation="Horizontal" HorizontalAlignment="Center" >
                 <Button x:Name="xRestart" Content="Restart" Click="restart_Click" HorizontalAlignment="Center" />
                 <Button x:Name="xBack2Main" Content="Back To Main" Click="back2Main_Click" HorizontalAlignment="Center" />
-            </StackPanel>
-
-            <StackPanel x:Name="computerDriverPanel" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="xComputerDrive" Content="Computer Drive On/Off" Click="computerDrive_Click" HorizontalAlignment="Left" />
-
-                <ComboBox x:Name="xComputerDriverSelection" Margin="5,5,0,0" Background="Black" Foreground="White" 
-                          SelectionChanged="xComputerDriverSelection_SelectionChanged" SelectedIndex="0" 
-                          HorizontalAlignment="Right" VerticalAlignment="Stretch">                    
-                        <x:String>Careful</x:String>
-                        <x:String>Risky</x:String>
-                    <!-- <x:String>Top</x:String> -->
-                </ComboBox>
             </StackPanel>
 
             <!-- for debugging

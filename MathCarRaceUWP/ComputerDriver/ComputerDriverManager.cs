@@ -37,6 +37,10 @@ namespace MathCarRaceUWP
 			{
 				mComputerDriver = new ComputerDriverRisky();
 			}
+			else if (compDriverType == ComputerDriverType.None)
+			{
+				// this should never happen...
+			}
 			else
 			{
 				mComputerDriver = new ComputerDriverTop();

@@ -85,6 +85,11 @@ namespace MathCarRaceUWP
 			return (uint)(mRouteGridPoints.Count - 1);
 		}
 
+		private void SetStatusField(string statusText)
+		{
+			xRaceStatus.Text = statusText;
+		}
+
 		#endregion properties
 
 		#region constructor and stuff
@@ -192,9 +197,10 @@ namespace MathCarRaceUWP
 			IList<Point> candidateGridPoints = mActiveTrack.GetStartingLinePoints();
 			cgpp.MarkCandidateGridPoints(xMyCanvas.Children, candidateGridPoints);
 
-			xRaceStatus.Text = StateHelper.startString;
+			SetStatusField(StateHelper.startRaceString);
 			mRaceState = StateHelper.RaceState.Manual;
-			xComputerDrive.IsEnabled = true;
+			xDriveModeSelection.SelectedIndex = 0;
+			xDriveModeSelection.IsEnabled = true;
 		}
 
 		#endregion paint track and grid lines
@@ -219,41 +225,56 @@ namespace MathCarRaceUWP
 
 			this.Frame.Navigate(typeof(MainPage));
 		}
-				
-		private void computerDrive_Click(object sender, RoutedEventArgs e)
-		{
-			// switch to computer driver if we are in manual mode
-			if (mRaceState == StateHelper.RaceState.Manual)
-			{
-				mRaceState = StateHelper.RaceState.ComputerDriver;
-				xRaceStatus.Text = StateHelper.computerInDriversSeatString;
 
-				mComputerDriverManager.Start(MyTimerCallback);
-			}
-			else if (mRaceState == StateHelper.RaceState.ComputerDriver)
-			{
-				StopComputerDriver();
-			}
-		}
-
-		private void xComputerDriverSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		private void xDriveModeSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			string selectedType = xComputerDriverSelection.SelectedItem as string;
-			if (string.CompareOrdinal("Careful", selectedType) == 0)
+			string selectedType = xDriveModeSelection.SelectedItem as string;
+			if (string.CompareOrdinal("Careful Computer", selectedType) == 0)
 			{
-				mComputerDriverManager.SelectType(ComputerDriverType.Careful);
+				HandleDriveModeChange(true, ComputerDriverType.Careful);
 			}
-			else if (string.CompareOrdinal("Risky", selectedType) == 0)
+			else if (string.CompareOrdinal("Risky Computer", selectedType) == 0)
 			{
-				mComputerDriverManager.SelectType(ComputerDriverType.Risky);
+				HandleDriveModeChange(true, ComputerDriverType.Risky);
 			}
-			else
+			else if (string.CompareOrdinal("Human", selectedType) == 0)
 			{
-				mComputerDriverManager.SelectType(ComputerDriverType.Top);
+				HandleDriveModeChange(false, ComputerDriverType.None);				
 			}
 		}
 
 		#endregion button event handlers
+
+		#region drive mode change
+
+		private void HandleDriveModeChange(bool computerDriver, ComputerDriverType cdt)
+		{
+			if (computerDriver)
+			{
+				// first set the new computer drive mode
+				mComputerDriverManager.SelectType(cdt);
+
+				if (mRaceState == StateHelper.RaceState.Manual)
+				{
+					// switch to computer driver as we are in manual mode now
+					StartComputerDriver();
+				}
+				else
+				{
+					// nothing to do, computer only change driving mode
+				}
+			}
+			else
+			{
+				if (mRaceState == StateHelper.RaceState.ComputerDriver)
+				{
+					// stop computer driver
+					StopComputerDriver();
+				}
+			}
+		}
+
+		#endregion drive mode change
 
 		#region computer driver
 
@@ -465,7 +486,14 @@ namespace MathCarRaceUWP
 			IList<Point> candidateGridPoints = mActiveCar.GetCandidateGridPoints(mRouteGridPoints);
 			cgpp.MarkCandidateGridPoints(xMyCanvas.Children, candidateGridPoints);
 
-			xRaceStatus.Text = StateHelper.drivingString;
+			if (mRaceState == StateHelper.RaceState.Manual)
+			{
+				SetStatusField(StateHelper.humanInDriversSeatString);
+			}
+			else
+			{
+				SetStatusField(StateHelper.computerInDriversSeatString);
+			}			
 		}
 
 		/// <summary>
@@ -545,14 +573,22 @@ namespace MathCarRaceUWP
 		{
 			mRaceState = StateHelper.RaceState.Finished;
 			mComputerDriverManager.Stop();
-			xComputerDrive.IsEnabled = false;
-			xRaceStatus.Text = StateHelper.endString;
+			xDriveModeSelection.IsEnabled = false;
+			SetStatusField(StateHelper.endRaceString);
+		}
+
+		private void StartComputerDriver()
+		{
+			mRaceState = StateHelper.RaceState.ComputerDriver;
+			SetStatusField(StateHelper.computerInDriversSeatString);
+			mComputerDriverManager.Start(MyTimerCallback);
 		}
 
 		private void StopComputerDriver()
 		{
 			mComputerDriverManager.Stop();
 			mRaceState = StateHelper.RaceState.Manual;
+			SetStatusField(StateHelper.humanInDriversSeatString);
 		}
 
 		#endregion state changes
