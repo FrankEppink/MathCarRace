@@ -42,7 +42,7 @@ namespace MathCarRaceUWP
 		private const string ERROR_INTERNAL = "An internal error has occurred!\n" + ERROR_RESTART;
 		private const string ERROR_INTERSECTION_OUTER = "Please do not cross the outer curve\n" + ERROR_RESTART;
 		private const string ERROR_INTERSECTION_INNER = "Please do not cross the inner curve\n" + ERROR_RESTART;
-
+				
 		/// <summary>
 		/// The background brush
 		/// </summary>
@@ -129,7 +129,7 @@ namespace MathCarRaceUWP
 			PaintStartingLineCandidate();
 
 			// reset all drawing member variables
-			ResetDrawings();
+			ResetDrawings();			
 		}
 
 		/// <summary>
@@ -166,6 +166,7 @@ namespace MathCarRaceUWP
 		{
 			mTrackCreationState = trackCreationState.Step01_OuterCurve;
 			SetInstructionText(false, STEP_01_OUTER_CURVE);
+			EnDisableSave();
 
 			foreach (UIElement elem in mOuterCurveUIElements) { xMyCanvas.Children.Remove(elem); }
 			mOuterCurveUIElements.Clear();
@@ -186,8 +187,6 @@ namespace MathCarRaceUWP
 			mPointerPressed = false;
 			mPreviousPoint = new Point?();
 			mNrStartingLineIntersected = 0;
-
-			xSave.IsEnabled = true;
 		}
 
 		#endregion constructor and stuff
@@ -419,10 +418,10 @@ namespace MathCarRaceUWP
 		{
 			ResetCurveDrawing();
 
-			// now validate if
-			// 1. curve starts on starting line - Verified by starting line X check
-			// 2. curve is complete - Verified by starting line X check
-			// 3. curve ends on starting line - Verified by starting line X check
+			// Validations
+			// 1. curve starts on starting line - Already verified by starting line X check
+			// 2. curve is complete - Already verified by starting line X check
+			// 3. curve ends on starting line - Already verified by starting line X check
 			// 4. curve surrounds the middle circle - ???
 
 			// TODO: check if validations are sufficient and working fine, is it possible to workaround them?
@@ -456,17 +455,37 @@ namespace MathCarRaceUWP
 				case trackCreationState.Step02_InnerCurve:
 					mTrackCreationState = trackCreationState.Step03_SaveTrack;
 					SetInstructionText(false, STEP_03_SAVE_TRACK);
-					xSave.IsEnabled = true;
 					break;
 				case trackCreationState.Step03_SaveTrack:
 					this.Frame.Navigate(typeof(MainPage));
 					break;
 				default:
+					mTrackCreationState = trackCreationState.Error;
 					SetInstructionText(true, ERROR_INTERNAL);
 					break;
 			}
+
+			EnDisableSave();
 		}
 
+		private void EnDisableSave()
+		{
+			switch (mTrackCreationState)
+			{
+				case trackCreationState.Step01_OuterCurve:
+				case trackCreationState.Step01_OuterCurveFinished:
+				case trackCreationState.Step02_InnerCurve:
+				case trackCreationState.Error:
+					xSave.IsEnabled = false;
+					break;
+				case trackCreationState.Step03_SaveTrack:
+					xSave.IsEnabled = true;
+					break;
+				default:
+					xSave.IsEnabled = false;
+					break;
+			}
+		}
 		#endregion handle state change
 
 		#region set instruction text
@@ -488,7 +507,15 @@ namespace MathCarRaceUWP
 			IList<Point> outerCurve = ConvertUIElementList2PointList(mOuterCurveUIElements);
 			IList<Point> innerCurve = ConvertUIElementList2PointList(mInnerCurveUIElements);
 
-			TrackLoader.SaveTrack(myStorageFile, outerCurve, innerCurve);
+			if ((outerCurve.Count == 0) || (innerCurve.Count == 0))
+			{
+				mTrackCreationState = trackCreationState.Error;
+				SetInstructionText(true, ERROR_INTERNAL);
+			}
+			else
+			{
+				TrackLoader.SaveTrack(myStorageFile, outerCurve, innerCurve);
+			}
 		}
 
 		private IList<Point> ConvertUIElementList2PointList(IList<Line> curve)

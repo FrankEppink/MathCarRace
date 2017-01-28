@@ -36,10 +36,12 @@
                 <TextBlock x:Name="xInstructions" HorizontalAlignment="Center" FontSize="24" FontStyle="Italic"/>
             </Border>
 
+            <Button x:Name="xSave" Content="Save" Click="save_Click" HorizontalAlignment="Center" />
+            
             <StackPanel x:Name="gameControlPanel" Orientation="Horizontal" HorizontalAlignment="Center" >
-                <Button x:Name="xSave" Content="save" IsEnabled="False" Click="save_Click" HorizontalAlignment="Center" />
-                <Button x:Name="xRestartDrawing" Content="restart" Click="restart_Click" HorizontalAlignment="Center" />
-                <Button x:Name="xBack2Main" Content="back to main" Click="back2Main_Click" HorizontalAlignment="Center" />
+
+                <Button x:Name="xRestartDrawing" Content="Restart" Click="restart_Click" HorizontalAlignment="Center" />
+                <Button x:Name="xBack2Main" Content="Back To Main" Click="back2Main_Click" HorizontalAlignment="Center" />
             </StackPanel>
                                   
         </StackPanel>
