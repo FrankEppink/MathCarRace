@@ -1,11 +1,15 @@
 ﻿Marks Email
 - ...
+
 Do new submission
+- change description in store
+
+- link mcr file extension with MathCarRace App
+
+------------------------------------------------------------------------------------
 
 Store
 (- add support email (eppink@gmx.de))
-
-------------------------------------------------------------------------------------
 
 general approach, study URLs to also cover different display sizes...
 

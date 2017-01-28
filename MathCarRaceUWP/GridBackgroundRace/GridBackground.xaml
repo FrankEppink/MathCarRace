@@ -46,10 +46,13 @@
             </StackPanel>
 
             <StackPanel x:Name="DriveModePanel" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Border Background="Black" HorizontalAlignment="Center" Margin="0,5,0,1">
+                <!-- the min width value for this stack panels are used to get a nice layout, i.e. 
+                        a constant width for the combo box
+                        and control elements aligned to the lower buttons -->
+                <Border Background="Black" HorizontalAlignment="Center" Margin="0,5,0,1" MinWidth="128">
                     <TextBlock Text="Drive Mode:" VerticalAlignment="Center" Foreground="White" Margin="10,0" />
                 </Border>
-                <ComboBox x:Name="xDriveModeSelection" Margin="5,5,0,0" Background="Black" Foreground="White" 
+                <ComboBox x:Name="xDriveModeSelection" Margin="5,5,0,0" Background="Black" Foreground="White" MinWidth="165"
                           SelectionChanged="xDriveModeSelection_SelectionChanged" SelectedIndex="0" 
                           HorizontalAlignment="Right" VerticalAlignment="Stretch">
                     <x:String>Human</x:String>
