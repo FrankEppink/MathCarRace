@@ -1,14 +1,14 @@
-﻿Math Car Race is a mathematical game that simulates a car race.
-I learned it in my math class in school a long time ago and programmed it as an app.
-So it is more a math game, than a car game.
+﻿MathCarRace is a mathematical game that simulates a car race.
+I learned it in my math class in school a long time ago and now programmed it as an app and hope you like it.
+So it is more a vector based math game, than a fancy car game.
+Aim of the game is to drive a track as fast as possible, i.e. with as few vectors as possible.
 
-The car movement on the tracks are based on vectors and each move is determined by the previous vector.
-Most of the times the next movement can be selected out of 9 grid points.
-The 9 grid points consist out of the the previous vector prolonged and the surrounding neighbor grid points.
-Be careful not to go too fast, i.e. choose too long vectors or otherwise you will not stay on the track.
+The car movement on the track is based on vectors and each move is determined by the previous vector.
+The previous vector is prolonged and the car can move to one of 9 grid points, i.e. the end of the prolonged vector and its 8 surrounding neighbors.
+Be careful not to go too fast, if you choose too long vectors you will be "thrown" off the track.
 
 Features:
 - Race on predefined tracks
 - Race on a random track
 - Race on own created and saved tracks
-- Let the computer drive a race track with different drive Modi (careful, risky, ...)
+- Let the computer drive a race track with different drive Modi (carefully, risky, ...)

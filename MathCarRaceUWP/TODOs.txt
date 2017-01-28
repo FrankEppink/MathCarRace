@@ -1,19 +1,36 @@
-﻿MVP until here ------ publish in store -----------------------------------------
+﻿Marks Email
+- ...
+Do new submission
 
-- tax info ok?
-- then publish
-- successful?
+Store
+(- add support email (eppink@gmx.de))
 
 ------------------------------------------------------------------------------------
 
-Different displays/platforms
-============================
-- windows 10 laptop
-- windows 10 mobile - phone
-- windows RT tablet - probably not available, but check
+general approach, study URLs to also cover different display sizes...
 
-general approach
+https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide
 https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide#use-visual-state-triggers-to-build-ui-that-can-adapt-to-available-screen-space
+
+see also samples at
+	D:\10 Tools\WindowsAppDevelopment\UWP\Windows-universal-samples-master
+
+Windows 10 Mobile
+=================
+https://developer.microsoft.com/en-us/dashboard/apps/9PJKN7L8ZWCT/submissions/1152921504626155397/Packages
+second submission - removed Windows 10 Mobile
+Check later if app is no longer reachable -> Susi
+
+- Try to install directly if I have done changes
+https://blogs.windows.com/buildingapps/2015/07/09/just-released-windows-10-application-deployment-tool/#6IK2ObOhTVHQ5Aa4.97
+see
+WinAppDeployCmd_info.txt
+Error at installation
+
+Current problems on Windows 10 Mobile
+- only the upper left corner is shown, it is not possible to slide to the other parts
+- zooming is also not possible, this would enable selection of gridpoint...
+- it is not possible to select the desired grid point, calculation is wrong?
 
 -------------------------------------------------------------------------------------
 
@@ -68,6 +85,10 @@ user paints track (GridBackgroundTrackCreation)
 ===============================================
 bug: starting line not completely correct, sometimes starting line grid points are outside but still can be clicked on
 
+Windows RT tablet
+=================
+not available in Store
+
 --------------------------------------------------------------------------------------------------------
 
 Implement if vector on track and not only is endpoint of new vector on track?
@@ -81,12 +102,6 @@ introduce options?
 - user can switch of candidate grid point marking
 - user can select speed of computer
 - user can ...?
-
-study
-	https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide
-see also samples at
-	D:\10 Tools\WindowsAppDevelopment\UWP\Windows-universal-samples-master
-
 
 - introduce different cars (with different vector possibilities: acceleration at start, acceleration and braking during race...)
 
