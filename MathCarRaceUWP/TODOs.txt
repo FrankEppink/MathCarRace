@@ -1,6 +1,5 @@
 ﻿Do new submission
-- change description in store
-- reply to Mark (file extension link not done, otherwise almost everything ...)
+- change description in store, needs to be done via another submission
 
 ------------------------------------------------------------------------------------
 
@@ -13,7 +12,7 @@ see also samples at
 	D:\10 Tools\WindowsAppDevelopment\UWP\Windows-universal-samples-master
 
 Highscore
----------
+=========
 Save own personal highscore per track
 
 Windows Tablet and Touchscreen
