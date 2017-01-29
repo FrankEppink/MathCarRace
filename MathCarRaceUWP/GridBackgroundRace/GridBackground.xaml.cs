@@ -608,5 +608,27 @@ namespace MathCarRaceUWP
 		}
 
 		#endregion state changes
+
+		#region workaround so that when pointer hovers over combo box the text is readable
+
+		/*
+		 * Without this workaround upon hovering over the combo box, the background would be grey and the text white
+		 * making the text almost unreadable
+		 * real fix would be to change the background color of the combo box to Chocolate
+		 * this would then be identical to the style of the buttons
+		 * see App.xaml for the Application.Resources
+		 */
+
+		private void xDriveModeSelection_PointerEntered(object sender, PointerRoutedEventArgs e)
+		{
+			xDriveModeSelection.Foreground = new Windows.UI.Xaml.Media.SolidColorBrush { Color = Windows.UI.Colors.Chocolate };
+		}
+				
+		private void xDriveModeSelection_PointerExited(object sender, PointerRoutedEventArgs e)
+		{
+			xDriveModeSelection.Foreground = new Windows.UI.Xaml.Media.SolidColorBrush { Color = Windows.UI.Colors.White };					
+		}
+
+		#endregion workaround so that when pointer hovers over combo box the text is readable
 	}
 }

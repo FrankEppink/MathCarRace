@@ -1,15 +1,8 @@
-﻿Marks Email
-- ...
-
-Do new submission
+﻿Do new submission
 - change description in store
-
-- link mcr file extension with MathCarRace App
+- reply to Mark (file extension link not done, otherwise almost everything ...)
 
 ------------------------------------------------------------------------------------
-
-Store
-(- add support email (eppink@gmx.de))
 
 general approach, study URLs to also cover different display sizes...
 
@@ -18,6 +11,14 @@ https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-p
 
 see also samples at
 	D:\10 Tools\WindowsAppDevelopment\UWP\Windows-universal-samples-master
+
+Highscore
+---------
+Save own personal highscore per track
+
+Windows Tablet and Touchscreen
+==============================
+Windows Surface Tablet...
 
 Windows 10 Mobile
 =================
@@ -38,18 +39,28 @@ Current problems on Windows 10 Mobile
 
 -------------------------------------------------------------------------------------
 
+Store
+(- add support email (eppink@gmx.de))
+
+Layout & Design
+===============
+Drive mode combo box 
+- background color
+
 track loading and saving
 ========================
 at initial load the path where the track files are located should be used
 to be checked on initial start on a different device...
 are the track files actually installed on the target device and if yes where
 
+link mcr file extension with MathCarRace App
+- permission problem with app in sandbox
+- let user decide if he wants that, could be that another app already has a file extension link and that the user wants to keep that.
+
 computer driver
 ===============
 top driver
 ----------
-- deactivate before publishing if not fixed...
-
 - calculating all possible curves, taking the best simply brute force will not work, too many possibilities?
 - brute force with the quadrant direction check possibly... -> for each step only a choice between 3 directions instead of up to 7 directions
 possibly use score-system, give scores to grid points and select the one with the maximum
@@ -67,9 +78,7 @@ risky driver
 ------------
 - still fails sometimes at random maps, but not important?
 
-Highscore
----------
-Save own highscore per track
+
 
 random polygon tracks
 =====================
@@ -78,12 +87,7 @@ random polygon tracks
 - end of outer curve must fit to start of outer curve
 with the increased percentage intervals no real problem anymore...
 
-Layout / GUI
-============
-Button for computer driver on/off and combo box for driver modi are not nice
-- they should not change position, when clicked on
-- they should have the same size
-- it should be clearer how to switch the computer driver on and off
+
 
 user paints track (GridBackgroundTrackCreation)
 ===============================================
