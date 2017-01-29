@@ -1,0 +1,19 @@
+﻿MathCarRace ist ein mathematisches Spiel welches ein Autorennen simuliert.
+Es basiert auf Vektoren die auf kariertem Papier gezeichnet werden und ist für Leute die Geometrie und Vektoren mögen.
+
+Das Ziel des Spiels ist es eine Rennstrecke so schnell wie möglich bzw. mit so wenig wie möglich Vektoren abzufahren.
+
+Die Bewegung des Autos auf der Rennstrecke basiert auf Vektoren und jeder Vektor wird durch den vorherigen Vektor bestimmt.
+Der vorherige Vektor wird verlängert, um den nächsten Mittelpunkt zu bestimmen.
+Der nächste Vektor kann im Mittelpunkt oder in einem der umliegenden 8 benachbarten Rasterpunkten enden.
+
+Seien Sie vorsichtig, dass das Auto nicht zu schnell wird, also die Vektoren zu lang werden, sonst "fliegen" Sie aus der Kurve ;-)
+
+Features:
+- Vordefinierte Rennstrecken
+- Zufallsstrecke
+- Erstellen eigener Rennstrecken
+- Computer fahren lassen mit verschiedenen Modi (vorsichtig, riskant)
+
+Anmerkung:
+Das Spiel selbst ist auf Englisch.

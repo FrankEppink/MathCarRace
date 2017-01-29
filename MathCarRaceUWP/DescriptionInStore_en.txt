@@ -1,0 +1,16 @@
+﻿MathCarRace is a mathematical game that simulates a car race.
+It is based on vectors drawn on squared paper and for people who like geometry and vectors.
+
+Aim of the game is to drive a track as fast as possible, i.e. with as few vectors as possible.
+
+The car movement on the track is based on vectors and each vector is determined by the previous vector.
+The previous vector is prolonged to determine the next middle point.
+The next vector can end in the middle point or in one of the 8 surrounding neighbor grid points.
+ 
+Be careful not to go too fast, if you choose too long vectors you will be "thrown" off the track.
+
+Features:
+- Race on predefined tracks
+- Race on a random track
+- Race on own created and saved tracks
+- Let the computer drive a race track with different drive modes (careful, risky, ...)

@@ -162,7 +162,8 @@
     <Content Include="Assets\SplashScreen.scale-200_original.png" />
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200_Original.png" />
-    <Content Include="DescriptionInStore.txt" />
+    <Content Include="DescriptionInStore_de.txt" />
+    <Content Include="DescriptionInStore_en.txt" />
     <Content Include="Images\car-racing.jpg" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Images\Screenshot.PNG" />
