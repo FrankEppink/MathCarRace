@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using Windows.Foundation;
 using Windows.UI.Input;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -144,8 +145,20 @@ namespace MathCarRaceUWP
 
 						if (filePath != null)
 						{
-							// load track
-							mActiveTrack = await TrackLoader.LoadTrack(filePath);
+							try
+							{
+								// load track
+								mActiveTrack = await TrackLoader.LoadTrack(filePath);
+							}
+							catch (Exception)
+							{
+								MessageDialog dialog = new MessageDialog("Please choose another track file, because the selected file is invalid: " 
+																+ Environment.NewLine + "'" + filePath + "'.", "Error");
+								await dialog.ShowAsync();
+
+								// an exception occurred, return to main page
+								Back2Main();
+							}
 						}
 					}
 
@@ -163,6 +176,9 @@ namespace MathCarRaceUWP
 				}
 				catch (Exception)
 				{
+					MessageDialog dialog = new MessageDialog("Problem with loading the track", "Error");
+					await dialog.ShowAsync();
+
 					// an exception occurred, return to main page
 					Back2Main();
 				}
