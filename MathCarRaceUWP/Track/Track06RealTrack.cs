@@ -8,6 +8,11 @@ namespace MathCarRaceUWP
 	{
 		#region ITrack
 
+		public string GetTrackId()
+		{
+			return "Track06RealTrack";
+		}
+
 		public void PaintTrack(UIElementCollection children, double width, double height, uint startingLineCoordinate)
 		{
 			// the given numbers are percentages, i.e.		width / 100 * 5			means 

@@ -1,23 +1,30 @@
-﻿Submission 4 done?
-- change german description in store
-
-------------------------------------------------------------------------------------
-
+﻿Scaling?
+========
 general approach, study URLs to also cover different display sizes...
 
 https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide
 https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide#use-visual-state-triggers-to-build-ui-that-can-adapt-to-available-screen-space
 
+solutions:
+implement scaling... change size of canvas depending on window size
+alternatively add scrollbar so that when not all elements are visible the user can use the scrollbar ... ugly
+implement zooming and sliding
+
 see also samples at
 	D:\10 Tools\WindowsAppDevelopment\UWP\Windows-universal-samples-master
 
-Highscore
-=========
-Save own personal highscore per track
+Bugs for Created Track 05
+=========================
+/// <summary>
+/// ray casting algorithm
+/// https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm
+/// </summary>
+private static bool Contains(Polygon polygon, Point location)
+fails for outer polygon and does not accept valid grid points
 
-Windows Tablet and Touchscreen
-==============================
-Windows Surface Tablet...
+Also the computer driver leaves the track, probably the same cause
+
+Also occurs for other created tracks but less often...
 
 Windows 10 Mobile
 =================

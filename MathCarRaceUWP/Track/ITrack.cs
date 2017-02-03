@@ -10,6 +10,13 @@ namespace MathCarRaceUWP
 	internal interface ITrack
 	{
 		/// <summary>
+		/// Get the Id of this track
+		/// Used internally for saving the personal highscore
+		/// </summary>
+		/// <returns></returns>
+		string GetTrackId();
+
+		/// <summary>
 		/// paint the track
 		/// </summary>
 		/// <param name="children">the object where to add the UI elements of the track</param>

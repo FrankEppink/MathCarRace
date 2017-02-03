@@ -15,6 +15,7 @@
 		internal const string endRaceString = "Race Is Finished!";
 		internal const string humanInDriversSeatString = "GoGoGo";
 		internal const string computerInDriversSeatString = "Computer Is Driving";
+		internal const string newHighscore = "New Highscore!";
 
 		#endregion constants
 	}

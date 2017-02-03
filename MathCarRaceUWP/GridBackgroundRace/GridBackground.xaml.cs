@@ -135,7 +135,7 @@ namespace MathCarRaceUWP
 					if (trackNumber != LOAD_TRACK_NR)
 					{
 						// a predefined track was chosen, get this track
-						mActiveTrack = TrackProvider.GetTrack((uint)trackNumber);
+						mActiveTrack = TrackProvider.GetTrack((uint)trackNumber);						
 					}
 					else
 					{
@@ -166,6 +166,10 @@ namespace MathCarRaceUWP
 					{
 						mActiveTrack.PaintTrack(xMyCanvas.Children, xMyCanvas.Width, xMyCanvas.Height,
 									GridLinePainter.GetMiddleGridRowYCoordinate(xMyCanvas));
+
+						// highscore
+						SetHighscoreInGUI();
+
 						InitRace();
 					}
 					else
@@ -552,14 +556,15 @@ namespace MathCarRaceUWP
 				mRouteElements.Add(uiElemsMovVector[index]);
 			}
 
-			// verify if the race is finished
-			if (mActiveTrack.CheckIfRaceIsFinished(mRouteGridPoints, gridPointClicked))
+			// verify if the race is finished, it is simpler to do this before adding the grid point
+			bool raceFinished = mActiveTrack.CheckIfRaceIsFinished(mRouteGridPoints, gridPointClicked);			
+			mRouteGridPoints.Add(gridPointClicked);
+			xNrVectors.Text = GetNrOfVectors().ToString();
+
+			if (raceFinished)
 			{
 				FinishRace();
 			}
-
-			mRouteGridPoints.Add(gridPointClicked);
-			xNrVectors.Text = GetNrOfVectors().ToString();
 		}
 
 		/// <summary>
@@ -591,6 +596,8 @@ namespace MathCarRaceUWP
 			mComputerDriverManager.Stop();
 			xDriveModeSelection.IsEnabled = false;
 			SetStatusField(StateHelper.endRaceString);
+
+			HandleNrOfVectors4FinishedRace(GetNrOfVectors());
 		}
 
 		private void StartComputerDriver()
@@ -630,5 +637,47 @@ namespace MathCarRaceUWP
 		}
 
 		#endregion workaround so that when pointer hovers over combo box the text is readable
+
+		#region highscore
+
+		private void SetHighscoreInGUI()
+		{
+			uint? highscoreOfTrack = Highscores.GetHighscore(mActiveTrack.GetTrackId());
+			if (highscoreOfTrack.HasValue)
+			{
+				xHighscore.Text = highscoreOfTrack.Value.ToString();
+			}
+			else
+			{
+				xHighscore.Text = "First Play";
+			}
+		}
+
+		private void HandleNrOfVectors4FinishedRace(uint nrOfVectors)
+		{
+			uint? highscoreOfTrack = Highscores.GetHighscore(mActiveTrack.GetTrackId());
+			if (highscoreOfTrack.HasValue)
+			{
+				if (nrOfVectors < highscoreOfTrack.Value)
+				{
+					// new highscore
+					HandleNewHighscore(nrOfVectors);
+				}
+			}
+			else
+			{
+				// First playthrough -> new highscore
+				HandleNewHighscore(nrOfVectors);
+			}
+		}
+
+		private void HandleNewHighscore(uint nrOfVectors)
+		{
+			Highscores.SaveHighscore(mActiveTrack.GetTrackId(), nrOfVectors);
+			xHighscore.Text = nrOfVectors.ToString();
+			SetStatusField(StateHelper.newHighscore);
+		}
+
+		#endregion highscore
 	}
 }

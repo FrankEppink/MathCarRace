@@ -9,6 +9,8 @@ namespace MathCarRaceUWP
 	{
 		#region members
 
+		private readonly string mFilepath;
+
 		internal double widthLeftStartingPoint;
 		internal double widthRightStartingPoint;
 
@@ -17,7 +19,22 @@ namespace MathCarRaceUWP
 
 		#endregion members
 
+		#region Constructor
+
+		internal LoadedTrack(string filepath)
+		{
+			mFilepath = filepath;
+		}
+
+		#endregion Constructor
+
+
 		#region ITrack
+
+		public string GetTrackId()
+		{
+			return "LoadedTrack" + mFilepath;
+		}
 
 		public void PaintTrack(UIElementCollection children, double width, double height, uint startingLineCoordinate)
 		{

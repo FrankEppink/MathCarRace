@@ -19,6 +19,11 @@ namespace MathCarRaceUWP
 
 		#region ITrack
 
+		public string GetTrackId()
+		{
+			return "Track03";
+		}
+
 		public void PaintTrack(UIElementCollection children, double width, double height, uint startingLineCoordinate)
 		{
 			const uint outerTrackCanvasBorderOffset = 10;

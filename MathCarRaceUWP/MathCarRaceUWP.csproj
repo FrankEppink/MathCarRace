@@ -119,6 +119,7 @@
     <Compile Include="ComputerDriver\IComputerDriver.cs" />
     <Compile Include="GridBackgroundRace\CandidateGridPointsPainter.cs" />
     <Compile Include="GridBackgroundRace\GridLinePainter.cs" />
+    <Compile Include="GridBackgroundRace\Highscores.cs" />
     <Compile Include="GridBackgroundRace\ICandidateGridPointsPainter.cs" />
     <Compile Include="GridBackgroundRace\StateHelper.cs" />
     <Compile Include="GridBackgroundRace\GridBrushDefs.cs" />

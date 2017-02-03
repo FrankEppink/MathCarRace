@@ -55,9 +55,9 @@ namespace MathCarRaceUWP
 		{
 			// load text that defines track from file
 			string completeContent = await GetStringFromTrackFile(filePath);
-
+						
 			// now parse the text and fill into LoadedTrack
-			return CreateTrack(completeContent);
+			return CreateTrack(completeContent, filePath);
 		}
 
 		internal static async void SaveTrack(StorageFile myStorageFile, IList<Point> outerCurve, IList<Point> innerCurve)
@@ -89,9 +89,9 @@ namespace MathCarRaceUWP
 			return completeContent;
 		}
 
-		private static ITrack CreateTrack(string completeContent)
+		private static ITrack CreateTrack(string completeContent, string filePath)
 		{
-			LoadedTrack loadedTrack = new LoadedTrack();			
+			LoadedTrack loadedTrack = new LoadedTrack(filePath);			
 
 			// split into segments: Starting line, outer curve, inner curve
 			string[] segments = completeContent.Split(SEPARATOR_SEGMENT);

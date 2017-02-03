@@ -24,6 +24,11 @@ namespace MathCarRaceUWP
 
 		#region ITrack
 
+		public string GetTrackId()
+		{
+			return "TrackPolygonRandom";
+		}
+
 		public void PaintTrack(UIElementCollection children, double width, double height, uint startingLineCoordinate)
 		{
 			// get width of starting line
