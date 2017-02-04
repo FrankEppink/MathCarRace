@@ -1,19 +1,4 @@
-﻿Scaling?
-========
-general approach, study URLs to also cover different display sizes...
-
-
-https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide#use-visual-state-triggers-to-build-ui-that-can-adapt-to-available-screen-space
-
-solutions:
-implement scaling... change size of canvas depending on window size
-alternatively add scrollbar so that when not all elements are visible the user can use the scrollbar ... ugly
-implement zooming and sliding
-
-see also samples at
-	D:\10 Tools\WindowsAppDevelopment\UWP\Windows-universal-samples-master
-
-Bugs for Created Track 05
+﻿Bugs for Created Track 05
 =========================
 /// <summary>
 /// ray casting algorithm
@@ -26,11 +11,26 @@ Also the computer driver leaves the track, probably the same cause
 
 Also occurs for other created tracks but less often...
 
+Scale to window size
+====================
+It would be great if the window scaled with the current window size, i.e. the canvas gets smaller so that always the complete picture is displayed.
+Alternatively add scrollbar so that when not all elements are visible the user can use the scrollbar ... ugly
+What is the use case of this feature? Support Windows Mobile? See below...
+
+Touchscreen support
+===================
+implement zooming and sliding (for touchscreens only...)
+
+see also samples at
+	D:\10 Tools\WindowsAppDevelopment\UWP\Windows-universal-samples-master
+
 Windows 10 Mobile
 =================
-https://developer.microsoft.com/en-us/dashboard/apps/9PJKN7L8ZWCT/submissions/1152921504626155397/Packages
-second submission - removed Windows 10 Mobile
-Check later if app is no longer reachable -> Susi
+Current problems on Windows 10 Mobile
+- only the upper left corner is shown, it is not possible to slide to the other parts
+- zooming is also not possible, this would enable selection of gridpoint...
+- it is not possible to select the desired grid point, calculation is wrong?
+- such small displays are hard to handle, check the views in the "Visual Studio - device preview toolbar""
 
 - Try to install directly if I have done changes
 https://blogs.windows.com/buildingapps/2015/07/09/just-released-windows-10-application-deployment-tool/#6IK2ObOhTVHQ5Aa4.97
@@ -38,15 +38,7 @@ see
 WinAppDeployCmd_info.txt
 Error at installation
 
-Current problems on Windows 10 Mobile
-- only the upper left corner is shown, it is not possible to slide to the other parts
-- zooming is also not possible, this would enable selection of gridpoint...
-- it is not possible to select the desired grid point, calculation is wrong?
-
 -------------------------------------------------------------------------------------
-
-Store
-(- add support email (eppink@gmx.de))
 
 Layout & Design
 ===============
@@ -84,8 +76,6 @@ risky driver
 ------------
 - still fails sometimes at random maps, but not important?
 
-
-
 random polygon tracks
 =====================
 - are they random enough?
@@ -93,24 +83,14 @@ random polygon tracks
 - end of outer curve must fit to start of outer curve
 with the increased percentage intervals no real problem anymore...
 
-
-
 user paints track (GridBackgroundTrackCreation)
 ===============================================
 bug: starting line not completely correct, sometimes starting line grid points are outside but still can be clicked on
-
-Windows RT tablet
-=================
-not available in Store
 
 --------------------------------------------------------------------------------------------------------
 
 Implement if vector on track and not only is endpoint of new vector on track?
 - game still works without this constraints
-
-Test-Explorer
-continuous Integration konfigurieren...
-only works with TFS?
 
 introduce options?
 - user can switch of candidate grid point marking
@@ -125,8 +105,14 @@ introduce options?
 
 - two players against each other?
 
+Techno Stuff
+------------
 - use Linq expressions and replace for loops
 
 - GridBackground.xaml(.cs)
 user binding, e.g. for the string
 use MVVM
+
+- Test-Explorer
+continuous Integration konfigurieren...
+only works with TFS?

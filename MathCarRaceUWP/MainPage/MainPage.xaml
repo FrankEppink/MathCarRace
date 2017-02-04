@@ -7,14 +7,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <!-- <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"> -->
-        <Grid>
-            <Grid.Background>
-                <ImageBrush ImageSource="/Images/car-racing.jpg" Stretch="UniformToFill" />
-            </Grid.Background>
-            <StackPanel x:Name="contentPanel" Margin="8,32,0,0">            
-            <StackPanel x:Name="inputPanel" Orientation="Vertical" Margin="0,20,0,20">
-                <Border Background="Black" Opacity="0.8" Margin="0,50,0,0" HorizontalAlignment="Center">
+    
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/car-racing.jpg" Stretch="UniformToFill" />
+        </Grid.Background>
+        <StackPanel x:Name="contentPanel" Margin="8,10,0,0">
+            <StackPanel x:Name="inputPanel" Orientation="Vertical" Margin="0,10,0,10">
+                <Border Background="Black" Opacity="0.8" Margin="0,20,0,0" HorizontalAlignment="Center">
                     <TextBlock Text="Choose Your Race Track" FontSize="36" />
                 </Border>
                 <StackPanel x:Name="geometryTrackPanel" Orientation="Horizontal" HorizontalAlignment="Center" >
@@ -34,7 +34,7 @@
                     <Button x:Name="loadTrack" Content="Load Track" Click="loadTrack_Click" />
                 </StackPanel>
             </StackPanel>
-            <Border Background="Black" Opacity="0.8" Margin="0,50,0,0" HorizontalAlignment="Center">
+            <Border Background="Black" Opacity="0.8" Margin="0,10,0,0" HorizontalAlignment="Center">
                 <TextBlock FontSize="24"  TextAlignment="Center">How to "MathCarRace"
                     <LineBreak/>Aim of the game is to drive a track as fast as possible, i.e. with as few vectors as possible.
                     <LineBreak/>
