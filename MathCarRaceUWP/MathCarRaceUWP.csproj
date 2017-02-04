@@ -160,9 +160,7 @@
     <None Include="MathCarRaceUWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\SplashScreen.scale-200_original.png" />
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
-    <Content Include="Assets\Wide310x150Logo.scale-200_Original.png" />
     <Content Include="DescriptionInStore_de.txt" />
     <Content Include="DescriptionInStore_en.txt" />
     <Content Include="Images\car-racing.jpg" />

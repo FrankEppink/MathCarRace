@@ -1,11 +1,4 @@
-﻿Technical debts
-===============
-Get rid of errors and warnings during build
-"Konflikt zwischen Prozessorarchitektur des Projekts "AMD64"..."
-
-Invalid qualifier: SCALE-200_ORIGINAL
-
-Scaling?
+﻿Scaling?
 ========
 general approach, study URLs to also cover different display sizes...
 
