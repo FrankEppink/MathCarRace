@@ -2,7 +2,7 @@
 ========
 general approach, study URLs to also cover different display sizes...
 
-https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide
+
 https://msdn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide#use-visual-state-triggers-to-build-ui-that-can-adapt-to-available-screen-space
 
 solutions:
